@@ -1,0 +1,45 @@
+{
+  "name": "personal-cabinet-azovgaz",
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Graalex/personal-cabinet-azovgaz.git"
+  },
+  "author": "Grigorchuk Aleksandr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Graalex/e-archiv-service/issues"
+  },
+  "homepage": "https://github.com/Graalex/personal-cabinet-azovgaz#readme",
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-redux": "^5.0.6",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.1",
+    "redux": "^3.7.2",
+    "redux-form": "^7.2.3",
+    "redux-thunk": "^2.2.0"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "husky": "^0.14.3",
+    "lint-staged": "^6.1.0",
+    "prettier": "^1.10.2",
+    "redux-devtools-extension": "^2.13.2",
+    "redux-logger": "^3.0.6"
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --single-quote --write",
+      "git add"
+    ]
+  }
+}
