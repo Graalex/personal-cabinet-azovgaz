@@ -1,9 +1,13 @@
 import React from 'react';
-import './App.css';
+import {connect} from 'react-redux';
 
-const App = () => (
-  <div className="App">
-  </div>
+import Auth from '../auth/auth';
+import Layout from '../layout/layout';
+
+const App = ({isAuth}) => (
+	isAuth ? <Layout/> : <Auth handleSubmit={this.login}/>
 );
 
-export default App;
+export default connect(
+  state => ({isAuth: state.cabinet.authenticate.isAuth})
+)(App);

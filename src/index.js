@@ -11,7 +11,7 @@ import {Provider} from 'react-redux';
 
 import './index.css';
 import App from './components/app/App';
-import {reducer} from './redux/reducer';
+import reducer from './redux/reducer';
 
 const loger = createLogger();
 const store = createStore(
