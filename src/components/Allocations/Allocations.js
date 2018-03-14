@@ -1,8 +1,10 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
-import Error from '../error/error';
-import Fetch from '../fetch/fetch';
+import './Allocations.css';
+
+import Error from '../Error/Error';
+import Fetch from '../Fetch/Fetch';
 
 import {getAllocations} from '../../redux/actions';
 
@@ -15,15 +17,17 @@ class Allocations extends PureComponent {
 	render() {
 		const {allocations, isFetch, isError, error} = this.props;
 		const renderContent = (
-			<section>
-				<header>
-					<h3>Начисления по лицевому счету</h3>
-				</header>
+			<section className="allocations">
+				<a name="allocations">
+					<header className="allocations-header">
+						<h3 className="allocations-header__title">Начисления по лицевому счету (свод по месяцам)</h3>
+					</header>
+				</a>
 				{
 					allocations && allocations.length > 0 && (
-						<table>
+						<table className="allocations-table">
 							<thead>
-								<tr>
+								<tr className="allocations-table__head">
 									<th>Год</th>
 									<th>Месяц</th>
 									<th>Начисленно, м<sup>3</sup></th>
@@ -33,11 +37,24 @@ class Allocations extends PureComponent {
 							<tbody>
 								{
 									allocations.map((item, index) => (
-									<tr key={index}>
+									<tr className="allocations-table__data" key={index}>
 										<td>{item.year}</td>
 										<td>{item.month}</td>
-										<td>{item.volume}</td>
-										<td>{item.total}</td>
+										<td>
+											{
+												new Intl.NumberFormat('ru')
+													.format(item.volume)
+											}
+											</td>
+										<td>
+											{
+												new Intl.NumberFormat('ru', {
+													style: 'currency',
+													currency: 'UAH'
+												})
+													.format(item.total)
+											}
+											</td>
 									</tr>
 									))
 								}

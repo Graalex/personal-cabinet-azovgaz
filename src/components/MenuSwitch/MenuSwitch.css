@@ -1,0 +1,10 @@
+.menu-switch {
+	display: none;
+}
+
+@media  (max-width: 560px) {
+	.menu-switch {
+		display: block;
+		width: 100%;
+	}
+}

@@ -1,0 +1,11 @@
+.nav {
+	position: fixed;
+	width: 200px;
+}
+
+.nav__menu {
+	display: grid;
+	grid-template-rows: auto;
+	grid-gap: 20px;
+	list-style: none;
+}

@@ -1,12 +1,12 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
-import Account from '../account/account';
-import Allocations from '../allocations/allocations';
-import Payments from '../payments/payments';
-import Subsidies from '../subsidies/subsidies';
-import Error from '../error/error';
-import Fetch from '../fetch/fetch';
+import Account from '../Account/Account';
+import Allocations from '../Allocations/Allocations';
+import Payments from '../Payments/Payments';
+import Subsidies from '../Subsidies/Subsidies';
+import Error from '../Error/Error';
+import Fetch from '../Fetch/Fetch';
 
 import {getAccount} from '../../redux/actions';
 

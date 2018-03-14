@@ -10,7 +10,7 @@ import {createLogger} from 'redux-logger';
 import {Provider} from 'react-redux';
 
 import './index.css';
-import App from './components/app/App';
+import App from './components/App/App';
 import reducer from './redux/reducer';
 
 const loger = createLogger();

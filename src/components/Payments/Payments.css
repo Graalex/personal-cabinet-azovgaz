@@ -1,0 +1,38 @@
+.payments {
+	display: grid;
+	grid-gap: 1.2rem;
+	border-bottom: 2px dotted var(--active-bg-color);
+	padding-bottom: 2rem;
+}
+
+.payments-header {
+	text-align: center;
+	font-weight: bold;
+	color: var(--active-text-color);
+}
+
+.payments-header__title {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+
+.payments-table {
+	width: 100%;
+}
+
+.payments-table__head {
+	height: 2.5rem;
+	background-color: var(--primary-bg-color);
+	color: var(--active-text-color);
+}
+
+.payments-table__data {
+	height: 2.5rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: var(--ultralight-bg-color);
+}
+
+.payments-table__data:nth-child(2n+1) {
+	background-color: var(--light-bg-color);
+}

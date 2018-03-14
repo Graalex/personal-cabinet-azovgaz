@@ -1,0 +1,42 @@
+.error__holder {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: black;
+	opacity: .5;
+	z-index: 1000;
+}
+
+.error-dialog {
+	position: relative;
+	left: 25%;
+	top: 25%;
+	width: 50%;
+	background-color: white;
+	box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+	border-radius: 2px;
+	z-index: 1001;
+}
+
+.error-dialog-header {
+	text-align: center;
+}
+
+.error-dialog-header__title {
+	font-size: 1.5rem;
+	line-height: 2;
+	font-weight: bold;
+}
+
+.error-dialog-header__subtitle {
+	font-weight: bold;
+	line-height: 1.5;
+	font-style: italic;
+}
+
+.error-dialog__message {
+	padding: 10% 1rem;
+	font-size: 1.2rem;
+}

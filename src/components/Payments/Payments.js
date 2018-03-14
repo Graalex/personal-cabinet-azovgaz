@@ -1,10 +1,12 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
-import Error from '../error/error';
-import Fetch from '../fetch/fetch';
+import Error from '../Error/Error';
+import Fetch from '../Fetch/Fetch';
 
 import {getPayments} from '../../redux/actions';
+
+import './Payments.css';
 
 class Payments extends PureComponent {
 	componentDidMount() {
@@ -15,15 +17,17 @@ class Payments extends PureComponent {
 	render() {
 		const {isFetch, isError, error, payments} = this.props;
 		const renderContent = (
-			<section>
-				<header>
-					<h3>Платежи по лицевому счету</h3>
-				</header>
+			<section className="payments">
+				<a name="payments">
+					<header className="payments-header">
+						<h3 className="payments-header__title">Платежи по лицевому счету (свод по месяцам)</h3>
+					</header>
+				</a>
 				{
 					payments && payments.length > 0 && (
-						<table>
+						<table className="payments-table">
 							<thead>
-								<tr>
+								<tr className="payments-table__head">
 									<th>Год</th>
 									<th>Месяц</th>
 									<th>Сумма, грн</th>
@@ -32,10 +36,18 @@ class Payments extends PureComponent {
 							<tbody>
 								{
 									payments.map((payment, index) => (
-										<tr key={index}>
+										<tr className="payments-table__data" key={index}>
 											<td>{payment.year}</td>
 											<td>{payment.month}</td>
-											<td>{payment.amount}</td>
+											<td>
+												{
+													new Intl.NumberFormat('ru', {
+														style: 'currency',
+														currency: 'UAH'
+													})
+														.format(payment.amount)
+												}
+												</td>
 										</tr>
 									))
 								}

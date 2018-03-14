@@ -1,0 +1,71 @@
+.account {
+	display: grid;
+	grid-template-rows: auto;
+	grid-gap: 1.2rem;
+	border-bottom: 2px dotted var(--active-bg-color);
+	padding-bottom: 2rem;
+}
+
+.account-header {
+	text-align: center;
+	font-weight: bold;
+	color: var(--active-text-color);
+}
+
+.account-header__title {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+
+.account-header__subtitle {
+	line-height: 1.25;
+	font-style: italic;
+}
+
+.account-item {
+	display: grid;
+	grid-template-columns: minmax(210px, 20%) 1fr;
+	grid-gap: 1rem;
+	padding: .5rem;
+	background-color: var(--light-bg-color);
+}
+
+.account-item:nth-child(2n+1) {
+	background-color: var(--ultralight-bg-color);
+}
+
+.account-item__label {
+	align-self: center;
+	font-weight: bold;
+}
+
+.account-item__value {
+	line-height: 1.5;
+}
+
+.account-plan-header {
+	text-align: center;
+}
+
+.account-plan-header__title {
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: .5rem 0;
+	color: var(--active-text-color);
+}
+
+.account-plan-table {
+	width: 100%;
+}
+
+.account-plan-table__head {
+	height: 2.5rem;
+	background-color: var(--primary-bg-color);
+	color: var(--active-text-color);
+}
+.account-plan-table__data {
+	height: 2.5rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: var(--light-bg-color);
+}

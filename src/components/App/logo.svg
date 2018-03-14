@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="200"
+   height="186.94597"
+   viewBox="0 0 300 186.94597"
+   id="svg3394"
+   inkscape:version="0.91 r13725"
+   sodipodi:docname="logo200.svg">
+  <metadata
+     id="metadata3415">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1034"
+     inkscape:window-height="792"
+     id="namedview3413"
+     showgrid="false"
+     fit-margin-top="0"
+     fit-margin-left="0"
+     fit-margin-right="0"
+     fit-margin-bottom="0"
+     inkscape:zoom="1"
+     inkscape:cx="268.82813"
+     inkscape:cy="231.51367"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg3394" />
+  <meta
+     name="author"
+     content="Григорчук Александр" />
+  <desc
+     id="desc3396">Логотип ООО АЗОВГАЗ</desc>
+  <defs
+     id="defs3398">
+    <style
+       type="text/css"
+       media="screen"
+       id="style3400"><![CDATA[
+          @font-face {
+            font-family: Kelly Slab;
+            src: url('KellySlab-Regular.ttf');
+          }
+        ]]></style>
+  </defs>
+  <g
+     id="logo"
+     transform="matrix(0.38824645,0,0,0.38824645,-4.3374408,-3.8824645)">
+    <g
+       id="flame"
+       transform="translate(-95,-40)">
+      <path
+         d="M 400,50 Q 180,250 348,400 C 248,250 428,140 400,50 Z"
+         transform="translate(-25,0)"
+         id="path3404"
+         inkscape:connector-curvature="0"
+         style="fill:#4671d5" />
+      <path
+         d="M 400,50 Q 180,250 348,400 C 248,250 428,140 400,50 Z"
+         transform="matrix(-1,0,0,-1,824,499)"
+         id="path3406"
+         inkscape:connector-curvature="0"
+         style="fill:#4671d5" />
+      <path
+         d="m 400,450 q -20,-8 -52,-50 C 248,250 428,140 400,50 q 30,20 52,50 c 95,145 -90,280 -52,350 z"
+         id="path3408"
+         inkscape:connector-curvature="0"
+         style="fill:#ffbf40" />
+    </g>
+    <g
+       id="label"
+       style="fill:#4671d5">
+      <text
+         x="10"
+         y="490"
+         style="font-weight:bold;font-size:100px;font-family:'Kelly Slab', sans-serif"
+         font-style="italc"
+         font-size="100"
+         lengthAdjust="space"
+         textLength="550"
+         id="text3411">АЗОВГАЗ</text>
+    </g>
+  </g>
+</svg>

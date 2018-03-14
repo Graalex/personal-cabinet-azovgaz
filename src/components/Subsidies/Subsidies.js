@@ -1,10 +1,12 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
-import Error from '../error/error';
-import Fetch from '../fetch/fetch';
+import Error from '../Error/Error';
+import Fetch from '../Fetch/Fetch';
 
 import {getSubsidies} from '../../redux/actions';
+
+import './Subsidies.css';
 
 class Subsidies extends PureComponent {
 	componentDidMount() {
@@ -15,15 +17,17 @@ class Subsidies extends PureComponent {
 	render() {
 		const {isFetch, isError, error, subsidies} = this.props;
 		const renderContent = (
-			<section>
-				<header>
-					<h3>Субсидии по лицевому счету</h3>
-				</header>
+			<section className="subsidies">
+				<a name="subsidies">
+					<header className="subsidies-header">
+						<h3 className="subsidies-header__title">Субсидии по лицевому счету (свод по месяцам)</h3>
+					</header>
+				</a>
 				{
 					subsidies && subsidies.length > 0 && (
-						<table>
+						<table className="subsidies-table">
 							<thead>
-							<tr>
+							<tr className="subsidies-table__head">
 								<th>Год</th>
 								<th>Месяц</th>
 								<th>Сумма, грн</th>
@@ -32,10 +36,18 @@ class Subsidies extends PureComponent {
 							<tbody>
 							{
 								subsidies.map((subsidie, index) => (
-									<tr key={index}>
+									<tr className="subsidies-table__data" key={index}>
 										<td>{subsidie.year}</td>
 										<td>{subsidie.month}</td>
-										<td>{subsidie.sum}</td>
+										<td>
+											{
+												new Intl.NumberFormat('ru', {
+													style: 'currency',
+													currency: 'UAH'
+												})
+													.format(subsidie.sum)
+											}
+											</td>
 									</tr>
 								))
 							}

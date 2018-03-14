@@ -1,0 +1,20 @@
+.anchor-item {
+	display: block;
+	background-color: var(--primary-bg-color);
+	font-weight: bold;
+	font-size: 1.1rem;
+	min-height: 50px;
+	padding-left: 1rem;
+	line-height: 50px;
+}
+
+.anchor-item--active {
+	background-color: var(--active-bg-color);
+}
+
+.anchor-item a {
+	text-decoration: none;
+	display: block;
+	line-height: 50px;
+	color: var(--primary-text-color);
+}
