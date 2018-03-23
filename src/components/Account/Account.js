@@ -31,12 +31,38 @@ const Account = ({account}) => (
 			<span className="account-item__label">К-во зарегистрированных лиц:</span>
 			<span className="account-item__value">{account.registeredPersons}</span>
 		</p>
-		{
-			account.benefitsPersons !== 0 && (
-				<p className="account-item">
-					<span className="account-item__label">Льготы:</span>
-					<span className="account-item__value">{account.benefitsKind}% {account.benefitsPersons} чел.</span>
-				</p>
+		{ account.benefits && account.benefits.length > 0 && (
+			<section className="account-benefits">
+				<header className="account-benefits-header">
+					<h3 className="account-benefits-header__title">Льготы</h3>
+				</header>
+				<table className="account-benefits-table">
+					<thead>
+						<tr className="account-benefits-table__head">
+							<th>Льготник</th>
+							<th>Вид льготы</th>
+							<th>Процент</th>
+							<th>К-во</th>
+							<th>ИНН</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							account.benefits.map((item, index) => (
+								<tr className="account-benefits-table__data" key={index}>
+									<td>
+										{item.family} {item.name} {item.patronymic}
+									</td>
+									<td>{item.type}</td>
+									<td>{item.percent}</td>
+									<td>{item.quantity}</td>
+									<td>{item.inn}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</section>
 			)
 		}
 		{
