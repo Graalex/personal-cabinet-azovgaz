@@ -69,3 +69,35 @@
 	font-weight: bold;
 	background-color: var(--light-bg-color);
 }
+
+.account-equipments-header {
+	text-align: center;
+}
+
+.account-equipments-header__title {
+	font-weight: bold;
+	font-size: 1.1rem;
+	padding: .5rem 0;
+	color: var(--active-text-color);
+}
+
+.account-equipments-table {
+	width: 100%;
+}
+
+.account-equipments-table__head {
+	height: 2.5rem;
+	background-color: var(--primary-bg-color);
+	color: var(--active-text-color);
+}
+
+.account-equipments-table__data {
+	height: 2.5rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: var(--ultralight-bg-color);
+}
+
+.account-equipments-table__data:nth-child(2n+1) {
+	background-color: var(--light-bg-color);
+}

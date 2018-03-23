@@ -62,6 +62,7 @@ export const getAccount = (ls, token) => {
 			if (json.status !== 200) throw json;
 			
 			const account = json.data;
+			console.dir(account);
 			dispatch({type: ACCOUNT_SUSSES, account});
 		}
 		

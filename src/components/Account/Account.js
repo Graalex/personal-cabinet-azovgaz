@@ -47,10 +47,39 @@ const Account = ({account}) => (
 				</p>
 			)
 		}
-		<p className="account-item">
-			<span className="account-item__label">Газовые приборы:</span>
-			<span className="account-item__value">{account.equipments}</span>
-		</p>
+		
+		{ account.equipments && (
+			<section className="account-equipments">
+				<header className="account-equipments-header">
+					<h3 className="account-equipments-header__title">Газовые приборы</h3>
+				</header>
+				<table className="account-equipments-table">
+					<thead>
+						<tr className="account-equipments-table__head">
+							<th>Тип</th>
+							<th>Наименование</th>
+							<th>Ко-во</th>
+							<th>По норме</th>
+							<th>В работе</th>
+						</tr>
+					</thead>
+					<tbody>
+						{
+							account.equipments.map((item, index) => (
+								<tr className="account-equipments-table__data" key={index}>
+									<td>{item.type}</td>
+									<td>{item.name}</td>
+									<td>{item.quantity}</td>
+									<td>{item.byNorma ? 'Да' : 'Нет'}</td>
+									<td>{item.cutOff ? 'Нет' : 'Да'}</td>
+								</tr>
+							))
+						}
+					</tbody>
+				</table>
+			</section>
+		)}
+		
 		<p className="account-item">
 			<span className="account-item__label">Площадь отопления:</span>
 			<span className="account-item__value">{account.heatedArea} м<sup>2</sup></span>
