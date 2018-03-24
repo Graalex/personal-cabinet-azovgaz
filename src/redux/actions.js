@@ -62,7 +62,6 @@ export const getAccount = (ls, token) => {
 			if (json.status !== 200) throw json;
 			
 			const account = json.data;
-			console.dir(account);
 			dispatch({type: ACCOUNT_SUSSES, account});
 		}
 		
@@ -88,8 +87,8 @@ export const getAllocations = (ls, token) => {
 			
 			if (json.status !== 200) throw json;
 			
-			const allocations = json.data;
-			dispatch({type: ALLOCATIONS_SUSSES, allocations});
+			const data = json.data;
+			dispatch({type: ALLOCATIONS_SUSSES, data});
 		}
 		
 		catch (error) {

@@ -15,7 +15,13 @@ class Allocations extends PureComponent {
 	}
 	
 	render() {
-		const {allocations, isFetch, isError, error} = this.props;
+		const {
+			allocations,
+			corrections,
+			isFetch,
+			isError,
+			error
+		} = this.props;
 		const renderContent = (
 			<section className="allocations">
 				<a name="allocations">
@@ -62,7 +68,53 @@ class Allocations extends PureComponent {
 						</table>
 					)
 				}
+				
+				{
+					corrections && corrections.length > 0 && (
+						<section>
+							<header className="allocations-header">
+								<h3 className="allocations-header__title">Корректировки по лицевому счету (свод по месяцам)</h3>
+							</header>
+							<table className="allocations-table">
+								<thead>
+									<tr className="allocations-table__head">
+										<th>Год</th>
+										<th>Месяц</th>
+										<th>Объем, м<sup>3</sup></th>
+										<th>Сумма, грн</th>
+									</tr>
+								</thead>
+								<tbody>
+									{
+										corrections.map((item, index) => (
+											<tr className="allocations-table__data" key={index}>
+												<td>{item.year}</td>
+												<td>{item.month}</td>
+												<td>
+													{
+														new Intl.NumberFormat('ru')
+															.format(item.volume)
+													}
+												</td>
+												<td>
+													{
+														new Intl.NumberFormat('ru', {
+															style: 'currency',
+															currency: 'UAH'
+														})
+															.format(item.amount)
+													}
+												</td>
+											</tr>
+										))
+									}
+								</tbody>
+							</table>
+						</section>
+					)
+				}
 			</section>
+		
 		);
 		const renderError = (
 			<Error title="Ошибка зарузки"
@@ -88,6 +140,7 @@ export default connect(
 		ls: state.cabinet.authenticate.ls,
 		token: state.cabinet.authenticate.token,
 		allocations: state.cabinet.abonent.allocation.allocations,
+		corrections: state.cabinet.abonent.allocation.corrections,
 		isFetch: state.cabinet.abonent.allocation.isFetching,
 		isError: state.cabinet.abonent.allocation.isError,
 		error: state.cabinet.abonent.allocation.error,

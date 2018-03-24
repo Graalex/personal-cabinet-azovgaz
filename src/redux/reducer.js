@@ -124,7 +124,8 @@ const cabinet = (state = initialState, action) => {
 			allocSus.isFetching = false;
 			allocSus.isError = false;
 			allocSus.error = {};
-			allocSus.allocations = action.allocations;
+			allocSus.allocations = action.data.allocations;
+			allocSus.corrections = action.data.corrections;
 			abnAllocSus.allocation = allocSus;
 			return {...state, abonent: abnAllocSus};
 		
