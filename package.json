@@ -10,7 +10,7 @@
   "bugs": {
     "url": "https://github.com/Graalex/e-archiv-service/issues"
   },
-  "homepage": "https://github.com/Graalex/personal-cabinet-azovgaz#readme",
+  "homepage": "http://office.azovgaz.com.ua",
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
