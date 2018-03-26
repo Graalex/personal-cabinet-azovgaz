@@ -14,6 +14,7 @@ import {HeaderPartion} from '../HeaderPartion';
 import {getSubsidies} from '../../redux/actions';
 
 import './Subsidies.css';
+import AccountTable from "../AccountTable/AccountTable";
 
 class Subsidies extends PureComponent {
 	componentDidMount() {
@@ -23,6 +24,19 @@ class Subsidies extends PureComponent {
 	
 	render() {
 		const {isFetch, isError, error, subsidies} = this.props;
+		const subsHeader = [
+			'Год',
+			'Месяц',
+			'Сумма, грн',
+		];
+		let subsData;
+		if (subsidies) {
+			subsData = subsidies.map(item => ([
+				item.year,
+				item.month,
+				new Intl.NumberFormat('ru', {style: 'currency',	currency: 'UAH'}).format(item.sum),
+			]));
+		}
 		const renderContent = (
 			<section className="subsidies">
 				<a name="subsidies">
@@ -30,34 +44,9 @@ class Subsidies extends PureComponent {
 				</a>
 				{
 					subsidies && subsidies.length > 0 && (
-						<table className="subsidies-table">
-							<thead>
-							<tr className="subsidies-table__head">
-								<th>Год</th>
-								<th>Месяц</th>
-								<th>Сумма, грн</th>
-							</tr>
-							</thead>
-							<tbody>
-							{
-								subsidies.map((subsidie, index) => (
-									<tr className="subsidies-table__data" key={index}>
-										<td>{subsidie.year}</td>
-										<td>{subsidie.month}</td>
-										<td>
-											{
-												new Intl.NumberFormat('ru', {
-													style: 'currency',
-													currency: 'UAH'
-												})
-													.format(subsidie.sum)
-											}
-											</td>
-									</tr>
-								))
-							}
-							</tbody>
-						</table>
+						<AccountTable headers={subsHeader}
+						              data={subsData}
+						/>
 					)
 				}
 			</section>

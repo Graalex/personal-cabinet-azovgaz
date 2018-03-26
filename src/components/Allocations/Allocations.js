@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import {HeaderPartion} from '../HeaderPartion';
+import {AccountTable} from '../AccountTable';
 
 import './Allocations.css';
 
@@ -30,50 +31,46 @@ class Allocations extends PureComponent {
 			isError,
 			error
 		} = this.props;
+		
+		const allocHeader = [
+			'Год',
+			'Месяц',
+			'Начисленно, куб. м',
+			'Сумма, грн'
+		];
+		const allocData = allocations.map(item => ([
+			item.year,
+			item.month,
+			new Intl.NumberFormat('ru').format(item.volume),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(item.total),
+		]));
+		
+		const correctHeader = [
+			'Год',
+			'Месяц',
+			'Объем, куб. м',
+			'Сумма, грн'
+		];
+		let correctData;
+		if (corrections) {
+			correctData = corrections.map(item => ([
+				item.year,
+				item.month,
+				new Intl.NumberFormat('ru').format(item.volume),
+				new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(item.amount),
+			]));
+		}
+		
 		const renderContent = (
 			<section className="allocations">
 				<a name="allocations">
 					<HeaderPartion title="Начисления по лицевому счету (свод по месяцам)"/>
 				</a>
-				{
-					allocations && allocations.length > 0 && (
-						<table className="allocations-table">
-							<thead>
-								<tr className="allocations-table__head">
-									<th>Год</th>
-									<th>Месяц</th>
-									<th>Начисленно, м<sup>3</sup></th>
-									<th>Сумма, грн</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									allocations.map((item, index) => (
-									<tr className="allocations-table__data" key={index}>
-										<td>{item.year}</td>
-										<td>{item.month}</td>
-										<td>
-											{
-												new Intl.NumberFormat('ru')
-													.format(item.volume)
-											}
-											</td>
-										<td>
-											{
-												new Intl.NumberFormat('ru', {
-													style: 'currency',
-													currency: 'UAH'
-												})
-													.format(item.total)
-											}
-											</td>
-									</tr>
-									))
-								}
-							</tbody>
-						</table>
-					)
-				}
+				{allocations && allocations.length > 0 && (
+					<AccountTable headers={allocHeader}
+					              data={allocData}
+					/>
+				)}
 				
 				{
 					corrections && corrections.length > 0 && (
@@ -81,41 +78,9 @@ class Allocations extends PureComponent {
 							<HeaderPartion title="Корректировки по лицевому счету (свод по месяцам)"
 							               level={3}
 							/>
-							<table className="allocations-table">
-								<thead>
-									<tr className="allocations-table__head">
-										<th>Год</th>
-										<th>Месяц</th>
-										<th>Объем, м<sup>3</sup></th>
-										<th>Сумма, грн</th>
-									</tr>
-								</thead>
-								<tbody>
-									{
-										corrections.map((item, index) => (
-											<tr className="allocations-table__data" key={index}>
-												<td>{item.year}</td>
-												<td>{item.month}</td>
-												<td>
-													{
-														new Intl.NumberFormat('ru')
-															.format(item.volume)
-													}
-												</td>
-												<td>
-													{
-														new Intl.NumberFormat('ru', {
-															style: 'currency',
-															currency: 'UAH'
-														})
-															.format(item.amount)
-													}
-												</td>
-											</tr>
-										))
-									}
-								</tbody>
-							</table>
+							<AccountTable headers={correctHeader}
+							              data={correctData}
+							/>
 						</section>
 					)
 				}

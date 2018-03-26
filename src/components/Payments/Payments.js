@@ -10,6 +10,7 @@ import {connect} from 'react-redux';
 import Error from '../Error/Error';
 import Fetch from '../Fetch/Fetch';
 import {HeaderPartion} from '../HeaderPartion';
+import {AccountTable} from '../AccountTable';
 
 import {getPayments} from '../../redux/actions';
 
@@ -23,6 +24,19 @@ class Payments extends PureComponent {
 	
 	render() {
 		const {isFetch, isError, error, payments} = this.props;
+		const payHeader = [
+			'Год',
+			'Месяц',
+			'Сумма, грн',
+		];
+		let payData;
+		if (payments) {
+			payData = payments.map(item => ([
+				item.year,
+				item.month,
+				new Intl.NumberFormat('ru', {style: 'currency',	currency: 'UAH'}).format(item.amount),
+			]));
+		}
 		const renderContent = (
 			<section className="payments">
 				<a name="payments">
@@ -30,34 +44,9 @@ class Payments extends PureComponent {
 				</a>
 				{
 					payments && payments.length > 0 && (
-						<table className="payments-table">
-							<thead>
-								<tr className="payments-table__head">
-									<th>Год</th>
-									<th>Месяц</th>
-									<th>Сумма, грн</th>
-								</tr>
-							</thead>
-							<tbody>
-								{
-									payments.map((payment, index) => (
-										<tr className="payments-table__data" key={index}>
-											<td>{payment.year}</td>
-											<td>{payment.month}</td>
-											<td>
-												{
-													new Intl.NumberFormat('ru', {
-														style: 'currency',
-														currency: 'UAH'
-													})
-														.format(payment.amount)
-												}
-												</td>
-										</tr>
-									))
-								}
-							</tbody>
-						</table>
+						<AccountTable headers={payHeader}
+						              data={payData}
+						/>
 					)
 				}
 			</section>

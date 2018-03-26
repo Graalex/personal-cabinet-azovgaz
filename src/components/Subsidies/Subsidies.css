@@ -3,24 +3,3 @@
 	grid-gap: 1.2rem;
 	padding-bottom: 2rem;
 }
-
-.subsidies-table {
-	width: 100%;
-}
-
-.subsidies-table__head {
-	height: 2.5rem;
-	background-color: var(--primary-bg-color);
-	color: var(--active-text-color);
-}
-
-.subsidies-table__data {
-	height: 2.5rem;
-	text-align: center;
-	font-weight: bold;
-	background-color: var(--ultralight-bg-color);
-}
-
-.subsidies-table__data:nth-child(2n+1) {
-	background-color: var(--light-bg-color);
-}

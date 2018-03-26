@@ -1,0 +1,20 @@
+.account-table {
+	width: 100%;
+}
+
+.account-table__header {
+	height: 2.5rem;
+	background-color: var(--primary-bg-color);
+	color: var(--active-text-color);
+}
+
+.account-table__data {
+	height: 2.5rem;
+	text-align: center;
+	font-weight: bold;
+	background-color: var(--ultralight-bg-color);
+}
+
+.account-table__data:nth-child(2n+1) {
+	background-color: var(--light-bg-color);
+}
