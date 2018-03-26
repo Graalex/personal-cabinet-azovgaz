@@ -1,6 +1,8 @@
 import React, {PureComponent} from 'react';
+import {connect} from 'react-redux';
 
 import Anchor from '../Anchor/Anchor';
+import {logout} from '../../redux/actions';
 
 import './Nav.css';
 
@@ -23,6 +25,11 @@ class Nav extends PureComponent {
 		this.setState({currentAnchor: key});
 	};
 	
+	handlerLogout = () => {
+		const {onLogout} = this.props;
+		onLogout();
+	};
+	
 	render() {
 		const {anchors, currentAnchor} = this.state;
 		
@@ -40,10 +47,19 @@ class Nav extends PureComponent {
 							</Anchor>
 						))
 					}
+					<Anchor name="logout"
+					        active={false}
+					        onClick={this.handlerLogout}
+					>
+						Выход
+					</Anchor>
 				</ul>
 			</nav>
 		);
 	}
 }
 
-export default Nav;
+export default connect(
+	null,
+	dispatch => ({onLogout: () => dispatch(logout())})
+)(Nav);
