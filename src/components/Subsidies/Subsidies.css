@@ -4,17 +4,6 @@
 	padding-bottom: 2rem;
 }
 
-.subsidies-header {
-	text-align: center;
-	font-weight: bold;
-	color: var(--active-text-color);
-}
-
-.subsidies-header__title {
-	font-size: 1.2rem;
-	line-height: 1.5;
-}
-
 .subsidies-table {
 	width: 100%;
 }

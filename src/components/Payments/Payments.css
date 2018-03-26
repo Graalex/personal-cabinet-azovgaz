@@ -5,17 +5,6 @@
 	padding-bottom: 2rem;
 }
 
-.payments-header {
-	text-align: center;
-	font-weight: bold;
-	color: var(--active-text-color);
-}
-
-.payments-header__title {
-	font-size: 1.2rem;
-	line-height: 1.5;
-}
-
 .payments-table {
 	width: 100%;
 }

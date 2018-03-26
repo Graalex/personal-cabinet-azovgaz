@@ -1,8 +1,15 @@
+/**
+ * /src/components/Subsidies/Subsidies.js
+ * @module Subsidies/Subsidies
+ * Компонент отображает субсидии по месяцам
+ */
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Error from '../Error/Error';
 import Fetch from '../Fetch/Fetch';
+import {HeaderPartion} from '../HeaderPartion';
 
 import {getSubsidies} from '../../redux/actions';
 
@@ -19,9 +26,7 @@ class Subsidies extends PureComponent {
 		const renderContent = (
 			<section className="subsidies">
 				<a name="subsidies">
-					<header className="subsidies-header">
-						<h3 className="subsidies-header__title">Субсидии по лицевому счету (свод по месяцам)</h3>
-					</header>
+					<HeaderPartion title="Субсидии по лицевому счету (свод по месяцам)"/>
 				</a>
 				{
 					subsidies && subsidies.length > 0 && (
@@ -75,6 +80,10 @@ class Subsidies extends PureComponent {
 			return renderContent;
 	}
 }
+
+Subsidies.propTypes = {
+	subsidies: PropTypes.array.isRequired,
+};
 
 export default connect(
 	state => ({

@@ -8,20 +8,16 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import AccountItem from './AccountItem';
+import {HeaderPartion} from '../HeaderPartion';
 
 import './Account.css';
 
 const Account = ({account}) => (
 	<section className="account">
 		<a name="account">
-			<header className="account-header">
-				<h2 className="account-header__title">Лицевой счет № {account.ls}</h2>
-				<p className="account-header__subtitle">
-					по состоянию на {
-					account.currentDate
-				}
-				</p>
-			</header>
+			<HeaderPartion title={`Лицевой счет № ${account.ls}`}
+			               subtitle={`по состоянию на ${account.currentDate	}`}
+			/>
 		</a>
 		<AccountItem label="Абонент:" value={`${account.family} ${account.name} ${account.patronymic}`}/>
 		<AccountItem label="Адрес:" value={account.address}/>
@@ -29,9 +25,7 @@ const Account = ({account}) => (
 		{account.registeredPersons && <AccountItem label="К-во зарегистрированных лиц:" value={account.registeredPersons}/>}
 		{ account.benefits && account.benefits.length > 0 && (
 			<section className="account-benefits">
-				<header className="account-benefits-header">
-					<h3 className="account-benefits-header__title">Льготы</h3>
-				</header>
+				<HeaderPartion title="Льготы" level={3}/>
 				<table className="account-benefits-table">
 					<thead>
 						<tr className="account-benefits-table__head">
@@ -69,9 +63,7 @@ const Account = ({account}) => (
 		
 		{ account.equipments && (
 			<section className="account-equipments">
-				<header className="account-equipments-header">
-					<h3 className="account-equipments-header__title">Газовые приборы</h3>
-				</header>
+				<HeaderPartion title="Газовые приборы" level={3}/>
 				<table className="account-equipments-table">
 					<thead>
 						<tr className="account-equipments-table__head">
@@ -105,40 +97,38 @@ const Account = ({account}) => (
 		}
 		<AccountItem label="Группа потребления:" value={`${account.group} (${account.groupName})`}/>
 		
-		<section className="account-plan">
-			<header className="account-plan-header">
-				<h3 className="account-plan-header__title">Плановое потребление природного газа по месяцам</h3>
-			</header>
-			{account.powers &&
+		{account.powers &&
+			<section className="account-plan">
+				<HeaderPartion title="Плановое потребление природного газа по месяцам" level={3}/>
 				<table className="account-plan-table">
 					<thead>
-						<tr className="account-plan-table__head">
-							<th>I</th>
-							<th>II</th>
-							<th>III</th>
-							<th>IV</th>
-							<th>V</th>
-							<th>VI</th>
-							<th>VII</th>
-							<th>VIII</th>
-							<th>IX</th>
-							<th>X</th>
-							<th>XI</th>
-							<th>XII</th>
-						</tr>
+					<tr className="account-plan-table__head">
+						<th>I</th>
+						<th>II</th>
+						<th>III</th>
+						<th>IV</th>
+						<th>V</th>
+						<th>VI</th>
+						<th>VII</th>
+						<th>VIII</th>
+						<th>IX</th>
+						<th>X</th>
+						<th>XI</th>
+						<th>XII</th>
+					</tr>
 					</thead>
 					<tbody>
-						<tr className="account-plan-table__data">
-							{
-								account.powers.map((power, index) => (
-									<td key={index}>{new Intl.NumberFormat('ru', {minimumFractionDigits: 2}).format(power)}</td>
-								))
-							}
-						</tr>
+					<tr className="account-plan-table__data">
+						{
+							account.powers.map((power, index) => (
+								<td key={index}>{new Intl.NumberFormat('ru', {minimumFractionDigits: 2}).format(power)}</td>
+							))
+						}
+					</tr>
 					</tbody>
 				</table>
-			}
-		</section>
+			</section>
+		}
 	</section>
 );
 

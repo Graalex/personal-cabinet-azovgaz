@@ -5,17 +5,6 @@
 	padding-bottom: 2rem;
 }
 
-.allocations-header {
-	text-align: center;
-	font-weight: bold;
-	color: var(--active-text-color);
-}
-
-.allocations-header__title {
-	font-size: 1.2rem;
-	line-height: 1.5;
-}
-
 .allocations-table {
 	width: 100%;
 }

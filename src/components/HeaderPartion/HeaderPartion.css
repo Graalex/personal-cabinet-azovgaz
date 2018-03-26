@@ -1,0 +1,15 @@
+.header-partion {
+	text-align: center;
+	font-weight: bold;
+	color: var(--active-text-color);
+}
+
+.header-partion__title {
+	font-size: 1.2rem;
+	line-height: 1.5;
+}
+
+.header-partion__subtitle {
+	line-height: 1.25;
+	font-style: italic;
+}

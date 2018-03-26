@@ -1,8 +1,15 @@
+/**
+ * /src/components/Payments/Payments.js
+ * @module Payments/Payments
+ * Компонент отображает платежи по месяцам
+ */
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Error from '../Error/Error';
 import Fetch from '../Fetch/Fetch';
+import {HeaderPartion} from '../HeaderPartion';
 
 import {getPayments} from '../../redux/actions';
 
@@ -19,9 +26,7 @@ class Payments extends PureComponent {
 		const renderContent = (
 			<section className="payments">
 				<a name="payments">
-					<header className="payments-header">
-						<h3 className="payments-header__title">Платежи по лицевому счету (свод по месяцам)</h3>
-					</header>
+					<HeaderPartion title="Платежи по лицевому счету (свод по месяцам)"/>
 				</a>
 				{
 					payments && payments.length > 0 && (
@@ -75,6 +80,10 @@ class Payments extends PureComponent {
 			return renderContent;
 	}
 }
+
+Payments.propTypes = {
+	payments: PropTypes.array.isRequired,
+};
 
 export default connect(
 	state => ({

@@ -1,5 +1,13 @@
+/**
+ * /src/components/Allocations/Allocations.js
+ * @module Allocations/Allocations
+ * Компонент отображающий начисления и корректировки по месяцам
+ */
 import React, {PureComponent} from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+
+import {HeaderPartion} from '../HeaderPartion';
 
 import './Allocations.css';
 
@@ -25,9 +33,7 @@ class Allocations extends PureComponent {
 		const renderContent = (
 			<section className="allocations">
 				<a name="allocations">
-					<header className="allocations-header">
-						<h3 className="allocations-header__title">Начисления по лицевому счету (свод по месяцам)</h3>
-					</header>
+					<HeaderPartion title="Начисления по лицевому счету (свод по месяцам)"/>
 				</a>
 				{
 					allocations && allocations.length > 0 && (
@@ -72,9 +78,9 @@ class Allocations extends PureComponent {
 				{
 					corrections && corrections.length > 0 && (
 						<section>
-							<header className="allocations-header">
-								<h3 className="allocations-header__title">Корректировки по лицевому счету (свод по месяцам)</h3>
-							</header>
+							<HeaderPartion title="Корректировки по лицевому счету (свод по месяцам)"
+							               level={3}
+							/>
 							<table className="allocations-table">
 								<thead>
 									<tr className="allocations-table__head">
@@ -134,6 +140,11 @@ class Allocations extends PureComponent {
 			return renderContent;
 	}
 }
+
+Allocations.propTypes = {
+	allocations: PropTypes.array,
+	corrections: PropTypes.array,
+};
 
 export default connect(
 	state => ({

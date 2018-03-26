@@ -6,33 +6,6 @@
 	padding-bottom: 2rem;
 }
 
-.account-header {
-	text-align: center;
-	font-weight: bold;
-	color: var(--active-text-color);
-}
-
-.account-header__title {
-	font-size: 1.2rem;
-	line-height: 1.5;
-}
-
-.account-header__subtitle {
-	line-height: 1.25;
-	font-style: italic;
-}
-
-.account-plan-header {
-	text-align: center;
-}
-
-.account-plan-header__title {
-	font-weight: bold;
-	font-size: 1.1rem;
-	padding: .5rem 0;
-	color: var(--active-text-color);
-}
-
 .account-plan-table {
 	width: 100%;
 }
@@ -47,17 +20,6 @@
 	text-align: center;
 	font-weight: bold;
 	background-color: var(--light-bg-color);
-}
-
-.account-equipments-header {
-	text-align: center;
-}
-
-.account-equipments-header__title {
-	font-weight: bold;
-	font-size: 1.1rem;
-	padding: .5rem 0;
-	color: var(--active-text-color);
 }
 
 .account-equipments-table {
@@ -79,17 +41,6 @@
 
 .account-equipments-table__data:nth-child(2n+1) {
 	background-color: var(--light-bg-color);
-}
-
-.account-benefits-header {
-	text-align: center;
-}
-
-.account-benefits-header__title {
-	font-weight: bold;
-	font-size: 1.1rem;
-	padding: .5rem 0;
-	color: var(--active-text-color);
 }
 
 .account-benefits-table {
