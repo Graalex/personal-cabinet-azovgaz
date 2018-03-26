@@ -1,0 +1,20 @@
+.account-item {
+	display: grid;
+	grid-template-columns: minmax(210px, 20%) 1fr;
+	grid-gap: 1rem;
+	padding: .5rem;
+	background-color: var(--light-bg-color);
+}
+
+.account-item:nth-child(2n+1) {
+	background-color: var(--ultralight-bg-color);
+}
+
+.account-item__label {
+	align-self: center;
+	font-weight: bold;
+}
+
+.account-item__value {
+	line-height: 1.5;
+}

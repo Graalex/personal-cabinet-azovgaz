@@ -1,7 +1,7 @@
 import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
-import Account from '../Account/Account';
+import {Account} from '../Account';
 import Allocations from '../Allocations/Allocations';
 import Payments from '../Payments/Payments';
 import Subsidies from '../Subsidies/Subsidies';

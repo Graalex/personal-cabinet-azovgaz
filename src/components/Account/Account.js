@@ -1,5 +1,13 @@
+/**
+ * /src/components/Account/Account.js
+ * @module Account/Account
+ * Компонент выводящий общую информацию о лицевом счете
+ */
 import React from 'react';
+import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+
+import AccountItem from './AccountItem';
 
 import './Account.css';
 
@@ -15,22 +23,10 @@ const Account = ({account}) => (
 				</p>
 			</header>
 		</a>
-		<p className="account-item">
-			<span className="account-item__label">Абонент:</span>
-			<span className="account-item__value">{account.family} {account.name} {account.patronymic}</span>
-		</p>
-		<p className="account-item">
-			<span className="account-item__label">Адрес:</span>
-			<span className="account-item__value">{account.address}</span>
-		</p>
-		<p className="account-item">
-			<span className="account-item__label">Персональный код (EIC):</span>
-			<span className="account-item__value">{account.eic}</span>
-		</p>
-		<p className="account-item">
-			<span className="account-item__label">К-во зарегистрированных лиц:</span>
-			<span className="account-item__value">{account.registeredPersons}</span>
-		</p>
+		<AccountItem label="Абонент:" value={`${account.family} ${account.name} ${account.patronymic}`}/>
+		<AccountItem label="Адрес:" value={account.address}/>
+		<AccountItem label="Персональный код (EIC):" value={account.eic}/>
+		{account.registeredPersons && <AccountItem label="К-во зарегистрированных лиц:" value={account.registeredPersons}/>}
 		{ account.benefits && account.benefits.length > 0 && (
 			<section className="account-benefits">
 				<header className="account-benefits-header">
@@ -67,10 +63,7 @@ const Account = ({account}) => (
 		}
 		{
 			account.meter && account.meter.length > 0 && (
-				<p className="account-item">
-					<span className="account-item__label">Счетчик газовый:</span>
-					<span className="account-item__value">{account.meter} зав. №{account.meterNumb}</span>
-				</p>
+				<AccountItem label="Счетчик газовый:" value={`${account.meter} зав. №${account.meterNumb}`}/>
 			)
 		}
 		
@@ -106,14 +99,11 @@ const Account = ({account}) => (
 			</section>
 		)}
 		
-		<p className="account-item">
-			<span className="account-item__label">Площадь отопления:</span>
-			<span className="account-item__value">{account.heatedArea} м<sup>2</sup></span>
-		</p>
-		<p className="account-item">
-			<span className="account-item__label">Группа потребления:</span>
-			<span className="account-item__value">{account.group} ({account.groupName})</span>
-		</p>
+		{
+			account.heatedArea && account.heatedArea > 0 &&
+				<AccountItem label="Площадь отопления:" value={account.heatedArea}> м<sup>2</sup></AccountItem>
+		}
+		<AccountItem label="Группа потребления:" value={`${account.group} (${account.groupName})`}/>
 		
 		<section className="account-plan">
 			<header className="account-plan-header">
@@ -152,6 +142,10 @@ const Account = ({account}) => (
 	</section>
 );
 
+Account.propTypes = {
+	account: PropTypes.object.isRequired,
+};
+
 export default connect(state => ({
-	account: state.cabinet.abonent.account
+	account: state.cabinet.abonent.account,
 }))(Account);

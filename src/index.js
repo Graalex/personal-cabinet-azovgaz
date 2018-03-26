@@ -14,6 +14,7 @@ import reducer from './redux/reducer';
 
 let store;
 let loger;
+// eslint-disable-next-line
 const DEBUG = process.env.REACT_APP_DEVEL == 1;
 
 if (DEBUG) {
