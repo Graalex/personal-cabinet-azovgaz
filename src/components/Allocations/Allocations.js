@@ -13,7 +13,7 @@ import {AccountTable} from '../AccountTable';
 import './Allocations.css';
 
 import Error from '../Error/Error';
-import Fetch from '../Fetch/Fetch';
+import Fetch from '../Loader/Loader';
 
 import {getAllocations} from '../../redux/actions';
 

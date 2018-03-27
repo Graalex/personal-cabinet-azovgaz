@@ -6,7 +6,7 @@ import Allocations from '../Allocations/Allocations';
 import Payments from '../Payments/Payments';
 import Subsidies from '../Subsidies/Subsidies';
 import Error from '../Error/Error';
-import Fetch from '../Fetch/Fetch';
+import Fetch from '../Loader/Loader';
 
 import {getAccount} from '../../redux/actions';
 

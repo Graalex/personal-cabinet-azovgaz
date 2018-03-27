@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {Field, reduxForm, getFormValues} from 'redux-form';
 import {connect} from 'react-redux';
 
-import Fetch from '../Fetch/Fetch';
+import {Loader} from '../Loader';
 import Error from '../Error/Error';
 
 import {login} from '../../redux/actions';
@@ -61,9 +61,9 @@ class Auth extends PureComponent {
 						<div className="auth-form-row auth-form-row--right">
 							<button className="auth-form__button" type="button" onClick={this.handleClick}>Найти лицевой счет</button>
 						</div>
+						{isFetching && <Loader message="Проверка лицевого счета"/>}
 					</form>
 				</section>
-				{isFetching && <Fetch message="Проверка лицевого счета ..."/>}
 				{
 					isError && <Error title="Ошибка"
 					                  subtitle="Ошибка при поиске лицевого счета"

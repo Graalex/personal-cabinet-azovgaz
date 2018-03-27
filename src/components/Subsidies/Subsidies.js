@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 
 import Error from '../Error/Error';
-import Fetch from '../Fetch/Fetch';
+import Fetch from '../Loader/Loader';
 import {HeaderPartion} from '../HeaderPartion';
 
 import {getSubsidies} from '../../redux/actions';

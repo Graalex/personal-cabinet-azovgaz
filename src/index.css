@@ -9,6 +9,7 @@
   --cnt-color: #eee;
   --light-bg-color: #B3E5FC;
   --ultralight-bg-color: #E1F5FE;
+  --loader-bg-color: #DDD;
 }
 
 *, html {
