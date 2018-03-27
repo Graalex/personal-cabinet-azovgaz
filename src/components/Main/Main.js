@@ -5,46 +5,73 @@ import {Account} from '../Account';
 import Allocations from '../Allocations/Allocations';
 import Payments from '../Payments/Payments';
 import Subsidies from '../Subsidies/Subsidies';
-import Error from '../Error/Error';
-import Fetch from '../Loader/Loader';
+import {Popup} from '../Popup';
+import {Loader} from '../Loader';
 
-import {getAccount} from '../../redux/actions';
+import {
+	getAccount,
+	getAllocations,
+	getPayments,
+	getSubsidies,
+} from '../../redux/actions';
 
 class Main extends PureComponent {
 	componentDidMount() {
-		const {ls, token, onAccount} = this.props;
+		const {
+			ls,
+			token,
+			onAccount,
+			onAllocation,
+			onPayment,
+			onSubsidie,
+		} = this.props;
 		
 		onAccount(ls, token);
+		onAllocation(ls, token);
+		onPayment(ls, token);
+		onSubsidie(ls, token);
 	}
 	
 	render() {
-		const {isFetch, isError, error} = this.props;
-		const renderFetch = (
-			<Fetch message="Загрузка данных ..."/>
-		);
+		const {
+			abonent,
+			allocation,
+			payment,
+			subsidie,
+		} = this.props;
 		
-		const renderError = (
-			<Error title="Ошибка"
-			       subtitle="Ошибка при загрузке данных о лицевом счете"
-			       message={error.message}
-			/>
-		);
-		
-		const renderContent = (
+		return (
 			<React.Fragment>
-				<Account/>
-				<Allocations/>
-				<Payments/>
-				<Subsidies/>
+				{
+					abonent.isFetching ? <Loader message="Загрузка данных о лицевом счете"/> : (
+						abonent.isError ? <Popup caption="Ошибка!" message={abonent.error.message}/> :
+							<Account account={abonent.account}/>
+					)
+				}
+				
+				{
+					allocation.isFetch ? <Loader message="Загрузка данных о начислениях"/> : (
+						allocation.isError ? <Popup caption="Ошибка!" message={allocation.error.message}/> :
+							<Allocations allocations={allocation.allocations} corrections={allocation.corrections}/>
+					)
+				}
+				
+				{
+					payment.isFetch ? <Loader message="Загрузка данных о платежах"/> : (
+						payment.isError ? <Popup caption="Ошибка!" message={payment.error.message}/> :
+							<Payments payments={payment.payments}/>
+					)
+				}
+				
+				{
+					subsidie.isFetch ? <Loader message="Загрузка данных о субсидиях"/> : (
+						subsidie.isError ? <Popup caption="Ошибка!" message={subsidie.error.message}/> :
+							<Subsidies subsidies={subsidie.subsidies}/>
+					)
+				}
+				
 			</React.Fragment>
 		);
-		
-		if (isFetch)
-			return renderFetch;
-		else if (isError)
-			return renderError;
-		else
-			return renderContent;
 	}
 }
 
@@ -52,11 +79,15 @@ export default connect(
 	state => ({
 		ls: state.cabinet.authenticate.ls,
 		token: state.cabinet.authenticate.token,
-		isFetch: state.cabinet.abonent.isFetching,
-		isError: state.cabinet.abonent.isError,
-		error: state.cabinet.abonent.error,
+		abonent: state.cabinet.abonent,
+		allocation: state.cabinet.abonent.allocation,
+		payment: state.cabinet.abonent.payment,
+		subsidie: state.cabinet.abonent.subsidie,
 	}),
 	dispatch => ({
 		onAccount: (ls, token) => dispatch(getAccount(ls, token)),
+		onAllocation: (ls, token) => dispatch(getAllocations(ls, token)),
+		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
+		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
 	})
 )(Main);

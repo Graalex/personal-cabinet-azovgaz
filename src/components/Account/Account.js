@@ -5,7 +5,6 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import AccountItem from './AccountItem';
 import {HeaderPartion} from '../HeaderPartion';
@@ -108,6 +107,4 @@ Account.propTypes = {
 	account: PropTypes.object.isRequired,
 };
 
-export default connect(state => ({
-	account: state.cabinet.abonent.account,
-}))(Account);
+export default Account;

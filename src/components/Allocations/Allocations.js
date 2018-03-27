@@ -5,31 +5,17 @@
  */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
 import './Allocations.css';
 
-import Error from '../Error/Error';
-import Fetch from '../Loader/Loader';
-
-import {getAllocations} from '../../redux/actions';
-
 class Allocations extends PureComponent {
-	componentDidMount() {
-		const {ls, token, onAllocations} = this.props;
-		onAllocations(ls,token);
-	}
-	
-	render() {
+		render() {
 		const {
 			allocations,
 			corrections,
-			isFetch,
-			isError,
-			error
 		} = this.props;
 		
 		const allocHeader = [
@@ -61,7 +47,7 @@ class Allocations extends PureComponent {
 			]));
 		}
 		
-		const renderContent = (
+		return (
 			<section className="allocations">
 				<a name="allocations">
 					<HeaderPartion title="Начисления по лицевому счету (свод по месяцам)"/>
@@ -85,24 +71,7 @@ class Allocations extends PureComponent {
 					)
 				}
 			</section>
-		
 		);
-		const renderError = (
-			<Error title="Ошибка зарузки"
-			       subtitle="Произошла ошибка при загрузки данных о начислениях"
-			       message={error.message}
-			/>
-		);
-		const renderFetch = (
-			<Fetch message="Загрузка данных ..."/>
-		);
-		
-		if (isError)
-			return renderError;
-		else if (isFetch)
-			return renderFetch;
-		else
-			return renderContent;
 	}
 }
 
@@ -111,17 +80,4 @@ Allocations.propTypes = {
 	corrections: PropTypes.array,
 };
 
-export default connect(
-	state => ({
-		ls: state.cabinet.authenticate.ls,
-		token: state.cabinet.authenticate.token,
-		allocations: state.cabinet.abonent.allocation.allocations,
-		corrections: state.cabinet.abonent.allocation.corrections,
-		isFetch: state.cabinet.abonent.allocation.isFetching,
-		isError: state.cabinet.abonent.allocation.isError,
-		error: state.cabinet.abonent.allocation.error,
-	}),
-	dispatch => ({
-		onAllocations: (ls, token) => dispatch(getAllocations(ls, token)),
-	})
-)(Allocations);
+export default Allocations;

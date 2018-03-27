@@ -5,25 +5,16 @@
  */
 import React, {PureComponent} from 'react';
 import PropTypes from 'prop-types';
-import {connect} from 'react-redux';
 
-import Error from '../Error/Error';
-import Fetch from '../Loader/Loader';
 import {HeaderPartion} from '../HeaderPartion';
-
-import {getSubsidies} from '../../redux/actions';
+import {AccountTable} from "../AccountTable";
 
 import './Subsidies.css';
-import AccountTable from "../AccountTable/AccountTable";
+
 
 class Subsidies extends PureComponent {
-	componentDidMount() {
-		const {ls, token, onSubsidies} = this.props;
-		onSubsidies(ls, token);
-	}
-	
 	render() {
-		const {isFetch, isError, error, subsidies} = this.props;
+		const {subsidies} = this.props;
 		const subsHeader = [
 			'Год',
 			'Месяц',
@@ -37,7 +28,8 @@ class Subsidies extends PureComponent {
 				new Intl.NumberFormat('ru', {style: 'currency',	currency: 'UAH'}).format(item.sum),
 			]));
 		}
-		const renderContent = (
+		
+		return (
 			<section className="subsidies">
 				<a name="subsidies">
 					<HeaderPartion title="Субсидии по лицевому счету (свод по месяцам)"/>
@@ -51,22 +43,6 @@ class Subsidies extends PureComponent {
 				}
 			</section>
 		);
-		const renderError = (
-			<Error title="Ошибка получения данных"
-			       subtitle="Произошла ошибка при получении данных о субсидиях"
-			       message={error.message}
-			/>
-		);
-		const renderFetch = (
-			<Fetch message="Загрузка данных ..."/>
-		);
-		
-		if (isError)
-			return renderError;
-		else if (isFetch)
-			return renderFetch;
-		else
-			return renderContent;
 	}
 }
 
@@ -74,16 +50,4 @@ Subsidies.propTypes = {
 	subsidies: PropTypes.array.isRequired,
 };
 
-export default connect(
-	state => ({
-		ls: state.cabinet.authenticate.ls,
-		token: state.cabinet.authenticate.token,
-		subsidies: state.cabinet.abonent.subsidie.subsidies,
-		isFetch: state.cabinet.abonent.subsidie.isFetching,
-		isError: state.cabinet.abonent.subsidie.isError,
-		error: state.cabinet.abonent.subsidie.error,
-	}),
-	dispatch => ({
-		onSubsidies: (ls, token) => dispatch(getSubsidies(ls, token)),
-	})
-)(Subsidies);
+export default Subsidies;
