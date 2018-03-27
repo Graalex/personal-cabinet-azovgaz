@@ -3,7 +3,7 @@ import {Field, reduxForm, getFormValues} from 'redux-form';
 import {connect} from 'react-redux';
 
 import {Loader} from '../Loader';
-import Error from '../Error/Error';
+import {Popup} from '../Popup';
 
 import {login} from '../../redux/actions';
 
@@ -40,37 +40,35 @@ class Auth extends PureComponent {
 		const {isFetching, isError, error} = this.props;
 		
 		return (
-			<React.Fragment>
-				<section className="auth">
-					<header className="auth-header">
-						<h2 className="auth-header__title">Вход в личный кабинет</h2>
-					</header>
-					<form className="auth-form">
-						<Field component={RenderField}
-						       type="number"
-						       name="ls"
-						       label="Лицевой счет"
-						       validate={[required, numeric]}
-						/>
-						<Field component={RenderField}
-						       type="text"
-						       name="family"
-						       label="Фамилия"
-						       validate={[required, alpha]}
-						/>
-						<div className="auth-form-row auth-form-row--right">
-							<button className="auth-form__button" type="button" onClick={this.handleClick}>Найти лицевой счет</button>
-						</div>
-						{isFetching && <Loader message="Проверка лицевого счета"/>}
-					</form>
-				</section>
-				{
-					isError && <Error title="Ошибка"
-					                  subtitle="Ошибка при поиске лицевого счета"
-					                  message={error.message}
+			<section className="auth">
+				<header className="auth-header">
+					<h2 className="auth-header__title">Вход в личный кабинет</h2>
+				</header>
+				<form className="auth-form">
+					<Field component={RenderField}
+					       type="number"
+					       name="ls"
+					       label="Лицевой счет"
+					       validate={[required, numeric]}
+					/>
+					<Field component={RenderField}
+					       type="text"
+					       name="family"
+					       label="Фамилия"
+					       validate={[required, alpha]}
+					/>
+					<div className="auth-form-row auth-form-row--right">
+						<button className="button" type="button" onClick={this.handleClick}>Найти лицевой счет</button>
+					</div>
+					{isFetching && <Loader message="Проверка лицевого счета"/>}
+				</form>
+				{isError &&
+					<Popup caption="Ошибка!"
+					       message={error.message}
+					       appElement={document.getElementById('cabinet')}
 					/>
 				}
-			</React.Fragment>
+			</section>
 		);
 	}
 }
