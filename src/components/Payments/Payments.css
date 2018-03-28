@@ -1,6 +1,0 @@
-.payments {
-	display: grid;
-	grid-gap: 1.2rem;
-	border-bottom: 2px dotted var(--active-bg-color);
-	padding-bottom: 2rem;
-}

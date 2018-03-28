@@ -10,8 +10,6 @@ import AccountItem from './AccountItem';
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
-import './Account.css';
-
 const Account = ({account}) => {
 	const benefHeader = [
 		'Льготник',
@@ -59,7 +57,7 @@ const Account = ({account}) => {
 	}
 	
 	return (
-		<section className="account">
+		<section className="cabinet-section">
 		<a name="account">
 			<HeaderPartion title={`Лицевой счет № ${account.ls}`}
 			               subtitle={`по состоянию на ${account.currentDate  }`}
@@ -80,21 +78,21 @@ const Account = ({account}) => {
 		)}
 		
 		{account.benefits && account.benefits.length > 0 && (
-			<section className="account-benefits">
+			<section>
 				<HeaderPartion title="Льготы" level={3}/>
 				<AccountTable headers={benefHeader} data={benefData}/>
 			</section>
 		)}
 		
 		{account.equipments && (
-			<section className="account-equipments">
+			<section>
 				<HeaderPartion title="Газовые приборы" level={3}/>
 				<AccountTable headers={equipHeader} data={equipData}/>
 			</section>
 		)}
 		
 		{account.powers &&
-		<section className="account-plan">
+		<section>
 			<HeaderPartion title="Плановое потребление природного газа по месяцам" level={3}/>
 			<AccountTable headers={planHeader} data={planData}/>
 		</section>
