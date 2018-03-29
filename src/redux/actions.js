@@ -13,7 +13,9 @@ import {
 	PAYMENTS_SUSSES,
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
-	SUBSIDIES_SUSSES
+	SUBSIDIES_SUSSES,
+	EQUIPMENTS_SUSSES,
+	BENEFICIARIES_SUSSES,
 } from "./constants";
 
 const APP_KEY = process.env.REACT_APP_API_KEY;
@@ -147,6 +149,40 @@ export const getSubsidies = (ls, token) => {
 			dispatch({type: SUBSIDIES_FAILURE, error});
 		}
 	}
+};
+
+export const getEquipments = (ls, token) => {
+	return async dispatch => {
+		const res = await fetch(
+			`${API_ENDPOINT}/equipments/${ls}`, {
+				headers: new Headers({
+					'Authorization': `Bearer ${token}`,
+					'Content_Type': 'application/json',
+				}),
+			}
+		);
+		
+		const json = await res.json();
+		const equipments = json.data;
+		dispatch({type: EQUIPMENTS_SUSSES, equipments});
+	};
+};
+
+export const getBeneficiares = (ls, token) => {
+	return async dispatch => {
+		const res = await fetch(
+			`${API_ENDPOINT}/beneficiaries/${ls}`, {
+				headers: new Headers({
+					'Authorization': `Bearer ${token}`,
+					'Content_Type': 'application/json',
+				}),
+			}
+		);
+		
+		const json = await res.json();
+		const beneficiares = json.data;
+		dispatch({type: BENEFICIARIES_SUSSES, beneficiares});
+	};
 };
 
 export const logout = () => ({type: LOGOUT});

@@ -30,8 +30,8 @@ const Account = ({account}) => {
 	];
 	
 	let benefData;
-	if (account && account.benefits) {
-		benefData = account.benefits.map(item => ([
+	if (account && account.beneficiares) {
+		benefData = account.beneficiares.map(item => ([
 			`${item.family} ${item.name} ${item.patronymic}`,
 			item.type,
 			`${item.percent}%`,
@@ -77,7 +77,7 @@ const Account = ({account}) => {
 			<AccountItem label="Счетчик газовый:" value={`${account.meter} зав. №${account.meterNumb}`}/>
 		)}
 		
-		{account.benefits && account.benefits.length > 0 && (
+		{account.beneficiares && account.beneficiares.length > 0 && (
 			<section>
 				<HeaderPartion title="Льготы" level={3}/>
 				<AccountTable headers={benefHeader} data={benefData}/>

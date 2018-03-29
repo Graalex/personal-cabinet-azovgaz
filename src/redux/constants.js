@@ -25,3 +25,13 @@ export const PAYMENTS_FAILURE = '@@Graalex/PAYMENTS_FAILURE';
 export const SUBSIDIES_FETCHING = '@@Graalex/SUBSIDIES_FETCHING';
 export const SUBSIDIES_SUSSES = '@@Graalex/SUBSIDIES_SUSSES';
 export const SUBSIDIES_FAILURE = '@@Graalex/SUBSIDIES_FAILURE';
+
+// Льготники
+export const BENEFICIARIES_FETCHING = '@@Graalex/BENEFICIARIES_FETCHING';
+export const BENEFICIARIES_SUSSES = '@@Graalex/BENEFICIARIES_SUSSES';
+export const BENEFICIARIES_FAILURE = '@@Graalex/BENEFICIARIES_FAILURE';
+
+// Газовые приборы
+export const EQUIPMENTS_FETCHING = '@@Graalex/EQUIPMENTS_FETCHING';
+export const EQUIPMENTS_SUSSES = '@@Graalex/EQUIPMENTS_SUSSES';
+export const EQUIPMENTS_FAILURE = '@@Graalex/EQUIPMENTS_FAILURE';

@@ -16,7 +16,9 @@ import {
 	PAYMENTS_SUSSES,
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
-	SUBSIDIES_SUSSES
+	SUBSIDIES_SUSSES,
+	EQUIPMENTS_SUSSES,
+	BENEFICIARIES_SUSSES,
 } from "./constants";
 
 const initialState = {
@@ -100,6 +102,19 @@ const cabinet = (state = initialState, action) => {
 			abnSus.account = action.account;
 			return {...state, abonent: abnSus};
 			
+		case EQUIPMENTS_SUSSES:
+			const abn = {...state.abonent};
+			const acc = {...state.abonent.account};
+			acc.equipments = action.equipments;
+			abn.account = acc;
+			return {...state, abonent: abn};
+			
+		case BENEFICIARIES_SUSSES:
+			const ab  = {...state.abonent};
+			const ac = {...state.abonent.account};
+			ac.beneficiares = action.beneficiares;
+			ab.account = ac;
+			return {...state, abonent: ab};
 			
 		case ALLOCATIONS_FETCHING:
 			const allocFet = {...state.abonent.allocation};

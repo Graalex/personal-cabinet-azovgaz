@@ -13,6 +13,8 @@ import {
 	getAllocations,
 	getPayments,
 	getSubsidies,
+	getEquipments,
+	getBeneficiares,
 } from '../../redux/actions';
 
 class Main extends PureComponent {
@@ -24,9 +26,13 @@ class Main extends PureComponent {
 			onAllocation,
 			onPayment,
 			onSubsidie,
+			onEquipments,
+			onBeneficiares,
 		} = this.props;
 		
 		onAccount(ls, token);
+		onEquipments(ls, token);
+		onBeneficiares(ls, token);
 		onAllocation(ls, token);
 		onPayment(ls, token);
 		onSubsidie(ls, token);
@@ -70,7 +76,7 @@ class Main extends PureComponent {
 				{
 					subsidie.isFetch ? <Loader message="Загрузка данных о субсидиях"/> : (
 						subsidie.isError ? <Popup caption="Ошибка!" message={subsidie.error.message}/> :
-							<Subsidies subsidies={subsidie.subsidies}/>
+							subsidie.subsidies.length > 0 && <Subsidies subsidies={subsidie.subsidies}/>
 					)
 				}
 				
@@ -93,5 +99,7 @@ export default connect(
 		onAllocation: (ls, token) => dispatch(getAllocations(ls, token)),
 		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
+		onEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
+		onBeneficiares: (ls, token) => dispatch(getBeneficiares(ls, token)),
 	})
 )(Main);
