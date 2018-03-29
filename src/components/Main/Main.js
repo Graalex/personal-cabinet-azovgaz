@@ -52,7 +52,11 @@ class Main extends PureComponent {
 				{
 					allocation.isFetch ? <Loader message="Загрузка данных о начислениях"/> : (
 						allocation.isError ? <Popup caption="Ошибка!" message={allocation.error.message}/> :
-							<Allocations allocations={allocation.allocations} corrections={allocation.corrections}/>
+							<Allocations allocations={allocation.allocations}
+							             corrections={allocation.corrections}
+							             price={allocation.price}
+							             balance={allocation.balance}
+							/>
 					)
 				}
 				

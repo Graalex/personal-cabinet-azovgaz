@@ -9,9 +9,15 @@ import PropTypes from 'prop-types';
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
-const Allocations = ({allocations, corrections}) => {
+const Allocations = ({
+	allocations,
+	corrections,
+	price,
+	balance,
+}) => {
 	let allocs;
 	let corrects;
+	let prc;
 	
 	const allocHeader = [
 		'Год',
@@ -37,7 +43,7 @@ const Allocations = ({allocations, corrections}) => {
 	];
 	
 	if (corrections) {
-		corrects= corrections.map(item => ([
+		corrects = corrections.map(item => ([
 			item.year,
 			item.month,
 			new Intl.NumberFormat('ru').format(item.volume),
@@ -45,10 +51,21 @@ const Allocations = ({allocations, corrections}) => {
 		]));
 	}
 	
+	if (price) {
+		prc = new Intl.NumberFormat('ru', {
+			style: 'currency',
+			currency: 'UAH',
+			minimumFractionDigits: 4,
+		})
+			.format(price);
+	}
+	
 	return (
 		<section className="cabinet-section">
 			<a name="allocations">
-				<HeaderPartion title="Начисления по лицевому счету (свод по месяцам)"/>
+				<HeaderPartion title="Начисления по лицевому счету (свод по месяцам)"
+				               subtitle={`Текущая цена газа ${prc} за 1 куб. м`}
+				/>
 			</a>
 			{allocations && allocations.length > 0 && (
 				<AccountTable headers={allocHeader}
@@ -73,8 +90,10 @@ const Allocations = ({allocations, corrections}) => {
 };
 
 Allocations.propTypes = {
-	allocations: PropTypes.array,
+	allocations: PropTypes.array.isRequired,
 	corrections: PropTypes.array,
+	price: PropTypes.number.isRequired,
+	balance: PropTypes.object.isRequired,
 };
 
 export default Allocations;

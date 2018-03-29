@@ -126,6 +126,8 @@ const cabinet = (state = initialState, action) => {
 			allocSus.error = {};
 			allocSus.allocations = action.data.allocations;
 			allocSus.corrections = action.data.corrections;
+			allocSus.price = action.data.price;
+			allocSus.balance = action.data.balance;
 			abnAllocSus.allocation = allocSus;
 			return {...state, abonent: abnAllocSus};
 		
