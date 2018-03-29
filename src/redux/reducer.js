@@ -2,9 +2,6 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 import {
-	ACCOUNT_FAILURE,
-	ACCOUNT_FETCHING,
-	ACCOUNT_SUSSES,
 	ALLOCATIONS_FAILURE,
 	ALLOCATIONS_FETCHING,
 	ALLOCATIONS_SUSSES,
@@ -20,6 +17,8 @@ import {
 	EQUIPMENTS_SUSSES,
 	BENEFICIARIES_SUSSES,
 } from "./constants";
+
+import {account} from './account/reducer';
 
 const initialState = {
 	authenticate: {
@@ -79,28 +78,6 @@ const cabinet = (state = initialState, action) => {
 			authErr.isError = true;
 			authErr.error = action.error;
 			return {...state, authenticate: authErr};
-			
-		
-		case ACCOUNT_FETCHING:
-			const abnFet = {...state.abonent};
-			abnFet.isFetching = true;
-			abnFet.isError = false;
-			return {...state, abonent: abnFet};
-			
-		case ACCOUNT_FAILURE:
-			const abnErr = {...state.abonent};
-			abnErr.isFetching = false;
-			abnErr.isError = true;
-			abnErr.error = action.error;
-			return {...state, abonent: abnErr};
-			
-		case ACCOUNT_SUSSES:
-			const abnSus = {...state.abonent};
-			abnSus.isFetching = false;
-			abnSus.isError = false;
-			abnSus.error = {};
-			abnSus.account = action.account;
-			return {...state, abonent: abnSus};
 			
 		case EQUIPMENTS_SUSSES:
 			const abn = {...state.abonent};
@@ -208,4 +185,8 @@ const cabinet = (state = initialState, action) => {
 	}
 };
 
-export default combineReducers({cabinet, form: formReducer});
+export default combineReducers({
+	cabinet,
+	account,
+	form: formReducer
+});

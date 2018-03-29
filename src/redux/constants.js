@@ -6,11 +6,6 @@ export const AUTH_FAILURE = '@@Graalex/AUTH_FAILURE';
 // Выход из кабинета
 export const LOGOUT = '@@Graalex/LOGOUT';
 
-// Общие данные лицевого счета
-export const ACCOUNT_FETCHING = '@@Graalex/ACCOUNT_FETCHING';
-export const ACCOUNT_SUSSES = '@@Graalex/ACCOUNT_SUSSES';
-export const ACCOUNT_FAILURE = '@@Graalex/ACCOUNT_FAILURE';
-
 // Начисления
 export const ALLOCATIONS_FETCHING = '@@Graalex/ALLOCATIONS_FETCHING';
 export const ALLOCATIONS_SUSSES = '@@Graalex/ALLOCATIONS_SUSSES';
@@ -35,3 +30,6 @@ export const BENEFICIARIES_FAILURE = '@@Graalex/BENEFICIARIES_FAILURE';
 export const EQUIPMENTS_FETCHING = '@@Graalex/EQUIPMENTS_FETCHING';
 export const EQUIPMENTS_SUSSES = '@@Graalex/EQUIPMENTS_SUSSES';
 export const EQUIPMENTS_FAILURE = '@@Graalex/EQUIPMENTS_FAILURE';
+
+export const APP_KEY = process.env.REACT_APP_API_KEY;
+export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;

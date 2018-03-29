@@ -22,7 +22,7 @@ class Main extends PureComponent {
 		const {
 			ls,
 			token,
-			onAccount,
+			uploadAccount,
 			onAllocation,
 			onPayment,
 			onSubsidie,
@@ -30,7 +30,7 @@ class Main extends PureComponent {
 			onBeneficiares,
 		} = this.props;
 		
-		onAccount(ls, token);
+		uploadAccount(ls, token);
 		onEquipments(ls, token);
 		onBeneficiares(ls, token);
 		onAllocation(ls, token);
@@ -40,7 +40,7 @@ class Main extends PureComponent {
 	
 	render() {
 		const {
-			abonent,
+			account,
 			allocation,
 			payment,
 			subsidie,
@@ -49,9 +49,9 @@ class Main extends PureComponent {
 		return (
 			<React.Fragment>
 				{
-					abonent.isFetching ? <Loader message="Загрузка данных о лицевом счете"/> : (
-						abonent.isError ? <Popup caption="Ошибка!" message={abonent.error.message}/> :
-							<Account account={abonent.account}/>
+					account.uploading ? <Loader message="Загрузка данных о лицевом счете"/> : (
+						account.error ? <Popup caption="Ошибка!" message={account.error.message}/> :
+							<Account account={account}/>
 					)
 				}
 				
@@ -89,13 +89,13 @@ export default connect(
 	state => ({
 		ls: state.cabinet.authenticate.ls,
 		token: state.cabinet.authenticate.token,
-		abonent: state.cabinet.abonent,
+		account: {...state.account},
 		allocation: state.cabinet.abonent.allocation,
 		payment: state.cabinet.abonent.payment,
 		subsidie: state.cabinet.abonent.subsidie,
 	}),
 	dispatch => ({
-		onAccount: (ls, token) => dispatch(getAccount(ls, token)),
+		uploadAccount: (ls, token) => dispatch(getAccount(ls, token)),
 		onAllocation: (ls, token) => dispatch(getAllocations(ls, token)),
 		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
