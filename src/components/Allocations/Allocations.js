@@ -18,6 +18,8 @@ const Allocations = ({
 	let allocs;
 	let corrects;
 	let prc;
+	let bal;
+	let balHeader;
 	
 	const allocHeader = [
 		'Год',
@@ -60,6 +62,26 @@ const Allocations = ({
 			.format(price);
 	}
 	
+	if (balance) {
+		bal = [[
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.beginSaldo),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.accrual),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.correction),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.payment),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.subsidie),
+			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(Math.abs(balance.saldo)),
+		]];
+		
+		balHeader = [
+			'Начальное сальдо',
+			'Начислено',
+			'Корректировка',
+			'Оплачено',
+			'Субсидии',
+			balance.saldo < 0 ? 'Переплата' : 'Долг',
+		];
+	}
+	
 	return (
 		<section className="cabinet-section">
 			<a name="allocations">
@@ -82,6 +104,17 @@ const Allocations = ({
 						<AccountTable headers={correctHeader}
 						              data={corrects}
 						/>
+					</section>
+				)
+			}
+			
+			{
+				balance && (
+					<section>
+						<HeaderPartion title="Баланс  по лицевому счету"
+						               level={3}
+						/>
+						<AccountTable headers={balHeader} data={bal}/>
 					</section>
 				)
 			}
