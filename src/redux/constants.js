@@ -26,10 +26,5 @@ export const BENEFICIARIES_FETCHING = '@@Graalex/BENEFICIARIES_FETCHING';
 export const BENEFICIARIES_SUSSES = '@@Graalex/BENEFICIARIES_SUSSES';
 export const BENEFICIARIES_FAILURE = '@@Graalex/BENEFICIARIES_FAILURE';
 
-// Газовые приборы
-export const EQUIPMENTS_FETCHING = '@@Graalex/EQUIPMENTS_FETCHING';
-export const EQUIPMENTS_SUSSES = '@@Graalex/EQUIPMENTS_SUSSES';
-export const EQUIPMENTS_FAILURE = '@@Graalex/EQUIPMENTS_FAILURE';
-
 export const APP_KEY = process.env.REACT_APP_API_KEY;
 export const API_ENDPOINT = process.env.REACT_APP_API_ENDPOINT;

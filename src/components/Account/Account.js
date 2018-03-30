@@ -10,7 +10,7 @@ import AccountItem from './AccountItem';
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
-const Account = ({account}) => {
+const Account = ({account, equipments}) => {
 	const benefHeader = [
 		'Льготник',
 		'Вид льготы',
@@ -22,7 +22,6 @@ const Account = ({account}) => {
 		'Тип',
 		'Наименование',
 		'Ко-во',
-		'По норме',
 		'В работе',
 	];
 	const planHeader = [
@@ -41,12 +40,11 @@ const Account = ({account}) => {
 	}
 	
 	let equipData;
-	if (account && account.equipments) {
-		equipData = account.equipments.map(item => ([
+	if (equipments) {
+		equipData = equipments.map(item => ([
 			item.type,
 			item.name,
 			item.quantity,
-			item.byNorma ? 'Да' : 'Нет',
 			item.cutOff ? 'Нет' : 'Да',
 		]));
 	}
@@ -84,11 +82,16 @@ const Account = ({account}) => {
 			</section>
 		)}
 		
-		{account.equipments && (
-			<section>
-				<HeaderPartion title="Газовые приборы" level={3}/>
-				<AccountTable headers={equipHeader} data={equipData}/>
-			</section>
+		{equipments ?
+				<section>
+					<HeaderPartion title="Газовые приборы" level={3}/>
+					<AccountTable headers={equipHeader} data={equipData}/>
+				</section>
+			:
+				<section>
+					<AccountItem label="Газопотребляющее оборудование:" value="Загрузка данных ..."/>
+				</section>
+		}
 		)}
 		
 		{account.powers &&
@@ -103,6 +106,7 @@ const Account = ({account}) => {
 
 Account.propTypes = {
 	account: PropTypes.object.isRequired,
+	equipments: PropTypes.array,
 };
 
 export default Account;

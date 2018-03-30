@@ -26,12 +26,12 @@ class Main extends PureComponent {
 			onAllocation,
 			onPayment,
 			onSubsidie,
-			onEquipments,
+			uploadEquipments,
 			onBeneficiares,
 		} = this.props;
 		
+		uploadEquipments(ls, token);
 		uploadAccount(ls, token);
-		onEquipments(ls, token);
 		onBeneficiares(ls, token);
 		onAllocation(ls, token);
 		onPayment(ls, token);
@@ -41,6 +41,7 @@ class Main extends PureComponent {
 	render() {
 		const {
 			account,
+			equipments,
 			allocation,
 			payment,
 			subsidie,
@@ -51,7 +52,9 @@ class Main extends PureComponent {
 				{
 					account.uploading ? <Loader message="Загрузка данных о лицевом счете"/> : (
 						account.error ? <Popup caption="Ошибка!" message={account.error.message}/> :
-							<Account account={account}/>
+							<Account account={account}
+							         equipments={equipments.list}
+							/>
 					)
 				}
 				
@@ -90,6 +93,7 @@ export default connect(
 		ls: state.cabinet.authenticate.ls,
 		token: state.cabinet.authenticate.token,
 		account: {...state.account},
+		equipments: {...state.equipments},
 		allocation: state.cabinet.abonent.allocation,
 		payment: state.cabinet.abonent.payment,
 		subsidie: state.cabinet.abonent.subsidie,
@@ -99,7 +103,7 @@ export default connect(
 		onAllocation: (ls, token) => dispatch(getAllocations(ls, token)),
 		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
-		onEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
+		uploadEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
 		onBeneficiares: (ls, token) => dispatch(getBeneficiares(ls, token)),
 	})
 )(Main);

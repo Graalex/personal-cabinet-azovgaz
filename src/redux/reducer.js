@@ -14,11 +14,11 @@ import {
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
 	SUBSIDIES_SUSSES,
-	EQUIPMENTS_SUSSES,
 	BENEFICIARIES_SUSSES,
 } from "./constants";
 
 import {account} from './account/reducer';
+import {equipments} from './equipments/reducer';
 
 const initialState = {
 	authenticate: {
@@ -78,13 +78,6 @@ const cabinet = (state = initialState, action) => {
 			authErr.isError = true;
 			authErr.error = action.error;
 			return {...state, authenticate: authErr};
-			
-		case EQUIPMENTS_SUSSES:
-			const abn = {...state.abonent};
-			const acc = {...state.abonent.account};
-			acc.equipments = action.equipments;
-			abn.account = acc;
-			return {...state, abonent: abn};
 			
 		case BENEFICIARIES_SUSSES:
 			const ab  = {...state.abonent};
@@ -188,5 +181,6 @@ const cabinet = (state = initialState, action) => {
 export default combineReducers({
 	cabinet,
 	account,
+	equipments,
 	form: formReducer
 });

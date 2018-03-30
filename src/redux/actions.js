@@ -11,7 +11,6 @@ import {
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
 	SUBSIDIES_SUSSES,
-	EQUIPMENTS_SUSSES,
 	BENEFICIARIES_SUSSES,
 } from "./constants";
 
@@ -122,23 +121,6 @@ export const getSubsidies = (ls, token) => {
 	}
 };
 
-export const getEquipments = (ls, token) => {
-	return async dispatch => {
-		const res = await fetch(
-			`${API_ENDPOINT}/equipments/${ls}`, {
-				headers: new Headers({
-					'Authorization': `Bearer ${token}`,
-					'Content_Type': 'application/json',
-				}),
-			}
-		);
-		
-		const json = await res.json();
-		const equipments = json.data;
-		dispatch({type: EQUIPMENTS_SUSSES, equipments});
-	};
-};
-
 export const getBeneficiares = (ls, token) => {
 	return async dispatch => {
 		const res = await fetch(
@@ -159,3 +141,4 @@ export const getBeneficiares = (ls, token) => {
 export const logout = () => ({type: LOGOUT});
 
 export * from './account/actions';
+export * from './equipments/actions';
