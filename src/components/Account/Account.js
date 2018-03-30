@@ -22,7 +22,6 @@ const Account = ({account}) => {
 		'Тип',
 		'Наименование',
 		'Ко-во',
-		'По норме',
 		'В работе',
 	];
 	const planHeader = [
@@ -46,7 +45,6 @@ const Account = ({account}) => {
 			item.type,
 			item.name,
 			item.quantity,
-			item.byNorma ? 'Да' : 'Нет',
 			item.cutOff ? 'Нет' : 'Да',
 		]));
 	}
