@@ -92,8 +92,8 @@ class Main extends PureComponent {
 
 export default connect(
 	state => ({
-		ls: state.cabinet.authenticate.ls,
-		token: state.cabinet.authenticate.token,
+		ls: state.auth.ls,
+		token: state.auth.token,
 		account: {...state.account},
 		equipments: {...state.equipments},
 		beneficiaries: {...state.beneficiaries},
