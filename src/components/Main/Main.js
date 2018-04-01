@@ -25,7 +25,7 @@ class Main extends PureComponent {
 			uploadAccount,
 			uploadAccruals,
 			uploadPayments,
-			onSubsidie,
+			uploadSubsidies,
 			uploadEquipments,
 			uploadBeneficiaries,
 		} = this.props;
@@ -35,7 +35,7 @@ class Main extends PureComponent {
 		uploadBeneficiaries(ls, token);
 		uploadAccruals(ls, token);
 		uploadPayments(ls, token);
-		onSubsidie(ls, token);
+		uploadSubsidies(ls, token);
 	}
 	
 	render() {
@@ -45,7 +45,7 @@ class Main extends PureComponent {
 			beneficiaries,
 			accruals,
 			payments,
-			subsidie,
+			subsidies,
 		} = this.props;
 		
 		return (
@@ -74,14 +74,14 @@ class Main extends PureComponent {
 				{
 					payments.uploading ? <Loader message="Загрузка данных о платежах"/> : (
 						payments.isError ? <Popup caption="Ошибка!" message={payments.error.message}/> :
-							<Payments payments={payments.list}/>
+							payments.list && <Payments payments={payments.list}/>
 					)
 				}
 				
 				{
-					subsidie.isFetch ? <Loader message="Загрузка данных о субсидиях"/> : (
-						subsidie.isError ? <Popup caption="Ошибка!" message={subsidie.error.message}/> :
-							subsidie.subsidies.length > 0 && <Subsidies subsidies={subsidie.subsidies}/>
+					subsidies.uploading ? <Loader message="Загрузка данных о субсидиях"/> : (
+						subsidies.isError ? <Popup caption="Ошибка!" message={subsidies.error.message}/> :
+							subsidies.list &&	subsidies.list.length > 0 && <Subsidies subsidies={subsidies.list}/>
 					)
 				}
 				
@@ -99,13 +99,13 @@ export default connect(
 		beneficiaries: {...state.beneficiaries},
 		accruals: {...state.accruals},
 		payments: {...state.payments},
-		subsidie: state.cabinet.abonent.subsidie,
+		subsidies: {...state.subsidies},
 	}),
 	dispatch => ({
 		uploadAccount: (ls, token) => dispatch(getAccount(ls, token)),
 		uploadAccruals: (ls, token) => dispatch(getAccruals(ls, token)),
 		uploadPayments: (ls, token) => dispatch(getPayments(ls, token)),
-		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
+		uploadSubsidies: (ls, token) => dispatch(getSubsidies(ls, token)),
 		uploadEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
 		uploadBeneficiaries: (ls, token) => dispatch(getBeneficiaries(ls, token)),
 	})

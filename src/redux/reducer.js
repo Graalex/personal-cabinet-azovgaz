@@ -5,9 +5,6 @@ import {
 	AUTH_FAILURE,
 	AUTH_FETCHING,
 	AUTH_SUSSES, LOGOUT,
-	SUBSIDIES_FAILURE,
-	SUBSIDIES_FETCHING,
-	SUBSIDIES_SUSSES,
 } from "./constants";
 
 import {account} from './account/reducer';
@@ -15,6 +12,7 @@ import {equipments} from './equipments/reducer';
 import {beneficiaries} from './beneficiaries/reducer';
 import {accruals} from './accruals/reducer';
 import {payments} from './payments/reducer';
+import {subsidies} from './subsidies/reducer';
 
 const initialState = {
 	authenticate: {
@@ -75,33 +73,6 @@ const cabinet = (state = initialState, action) => {
 			authErr.error = action.error;
 			return {...state, authenticate: authErr};
 			
-		case SUBSIDIES_FETCHING:
-			const abnSubFet = {...state.abonent};
-			const subFet = {...state.abonent.subsidie};
-			subFet.isFetching = true;
-			subFet.isError = false;
-			abnSubFet.subsidie = subFet;
-			return {...state, abonent: abnSubFet};
-		
-		case SUBSIDIES_FAILURE:
-			const abnSubFal = {...state.abonent};
-			const subFal = {...state.abonent.subsidie};
-			subFal.isFetching = false;
-			subFal.isError = true;
-			subFal.error = action.error;
-			abnSubFal.subsidie = subFal;
-			return {...state, abonent: abnSubFal};
-		
-		case SUBSIDIES_SUSSES:
-			const abnSubSus = {...state.abonent};
-			const subSus = {...state.abonent.subsidie};
-			subSus.isFetching = false;
-			subSus.isError = false;
-			subSus.error = {};
-			subSus.subsidies = action.subsidies;
-			abnSubSus.subsidie = subSus;
-			return {...state, abonent: abnSubSus};
-			
 		case LOGOUT:
 			return {...initialState};
 			
@@ -117,5 +88,6 @@ export default combineReducers({
 	beneficiaries,
 	accruals,
 	payments,
+	subsidies,
 	form: formReducer
 });
