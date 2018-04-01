@@ -1,7 +1,4 @@
 import {
-	ALLOCATIONS_FAILURE,
-	ALLOCATIONS_FETCHING,
-	ALLOCATIONS_SUSSES,
 	AUTH_FAILURE,
 	AUTH_FETCHING,
 	AUTH_SUSSES, LOGOUT,
@@ -40,32 +37,6 @@ export const login = (ls, family, key = APP_KEY) => {
 			dispatch({type: AUTH_FAILURE, error: err})
 		}
 	};
-};
-
-export const getAllocations = (ls, token) => {
-	return async dispatch => {
-		try {
-			dispatch({type: ALLOCATIONS_FETCHING});
-			const res = await fetch(
-				`${API_ENDPOINT}/allocations/${ls}`, {
-					headers: new Headers({
-						'Authorization': `Bearer ${token}`,
-						'Content_Type': 'application/json',
-					}),
-				}
-			);
-			const json = await res.json();
-			
-			if (json.status !== 200) throw json;
-			
-			const data = json.data;
-			dispatch({type: ALLOCATIONS_SUSSES, data});
-		}
-		
-		catch (error) {
-			dispatch({type: ALLOCATIONS_FAILURE}, error);
-		}
-	}
 };
 
 export const getPayments = (ls, token) => {
@@ -126,3 +97,4 @@ export const logout = () => ({type: LOGOUT});
 export * from './account/actions';
 export * from './equipments/actions';
 export * from './beneficiaries/actions';
+export * from './accruals/actions';

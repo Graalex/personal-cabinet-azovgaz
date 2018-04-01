@@ -7,10 +7,6 @@ export const AUTH_FAILURE = '@@Graalex/AUTH_FAILURE';
 export const LOGOUT = '@@Graalex/LOGOUT';
 
 // Начисления
-export const ALLOCATIONS_FETCHING = '@@Graalex/ALLOCATIONS_FETCHING';
-export const ALLOCATIONS_SUSSES = '@@Graalex/ALLOCATIONS_SUSSES';
-export const ALLOCATIONS_FAILURE = '@@Graalex/ALLOCATIONS_FAILURE';
-
 // Платежи
 export const PAYMENTS_FETCHING = '@@Graalex/PAYMENTS_FETCHING';
 export const PAYMENTS_SUSSES = '@@Graalex/PAYMENTS_SUSSES';

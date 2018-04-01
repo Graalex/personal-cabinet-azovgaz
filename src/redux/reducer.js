@@ -2,9 +2,6 @@ import {combineReducers} from 'redux';
 import {reducer as formReducer} from 'redux-form';
 
 import {
-	ALLOCATIONS_FAILURE,
-	ALLOCATIONS_FETCHING,
-	ALLOCATIONS_SUSSES,
 	AUTH_FAILURE,
 	AUTH_FETCHING,
 	AUTH_SUSSES, LOGOUT,
@@ -19,6 +16,7 @@ import {
 import {account} from './account/reducer';
 import {equipments} from './equipments/reducer';
 import {beneficiaries} from './beneficiaries/reducer';
+import {accruals} from './accruals/reducer';
 
 const initialState = {
 	authenticate: {
@@ -79,37 +77,6 @@ const cabinet = (state = initialState, action) => {
 			authErr.error = action.error;
 			return {...state, authenticate: authErr};
 			
-	case ALLOCATIONS_FETCHING:
-			const allocFet = {...state.abonent.allocation};
-			const abnAllocFet = {...state.abonent};
-			allocFet.isFetching = true;
-			allocFet.isError = false;
-			abnAllocFet.allocation = allocFet;
-			return {...state, abonent: abnAllocFet};
-			
-		case ALLOCATIONS_FAILURE:
-			const allocFal = {...state.abonent.allocation};
-			const abnAllocFal = {...state.abonent};
-			allocFal.isFetching = false;
-			allocFal.isError = true;
-			allocFal.error = action.error;
-			abnAllocFal.allocation = allocFal;
-			return {...state, abonent: abnAllocFal};
-			
-		case ALLOCATIONS_SUSSES:
-			const allocSus = {...state.abonent.allocation};
-			const abnAllocSus = {...state.abonent};
-			allocSus.isFetching = false;
-			allocSus.isError = false;
-			allocSus.error = {};
-			allocSus.allocations = action.data.allocations;
-			allocSus.corrections = action.data.corrections;
-			allocSus.price = action.data.price;
-			allocSus.balance = action.data.balance;
-			abnAllocSus.allocation = allocSus;
-			return {...state, abonent: abnAllocSus};
-		
-		
 		case PAYMENTS_FETCHING:
 			const abnPayFet = {...state.abonent};
 			const payFet = {...state.abonent.payment};
@@ -176,5 +143,6 @@ export default combineReducers({
 	account,
 	equipments,
 	beneficiaries,
+	accruals,
 	form: formReducer
 });

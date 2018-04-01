@@ -2,7 +2,7 @@ import React, {PureComponent} from 'react';
 import {connect} from 'react-redux';
 
 import {Account} from '../Account';
-import Allocations from '../Allocations/Allocations';
+import Allocations from '../Accruals/Accruals';
 import Payments from '../Payments/Payments';
 import Subsidies from '../Subsidies/Subsidies';
 import {Popup} from '../Popup';
@@ -10,7 +10,7 @@ import {Loader} from '../Loader';
 
 import {
 	getAccount,
-	getAllocations,
+	getAccruals,
 	getPayments,
 	getSubsidies,
 	getEquipments,
@@ -23,7 +23,7 @@ class Main extends PureComponent {
 			ls,
 			token,
 			uploadAccount,
-			onAllocation,
+			uploadAccruals,
 			onPayment,
 			onSubsidie,
 			uploadEquipments,
@@ -33,7 +33,7 @@ class Main extends PureComponent {
 		uploadEquipments(ls, token);
 		uploadAccount(ls, token);
 		uploadBeneficiaries(ls, token);
-		onAllocation(ls, token);
+		uploadAccruals(ls, token);
 		onPayment(ls, token);
 		onSubsidie(ls, token);
 	}
@@ -43,7 +43,7 @@ class Main extends PureComponent {
 			account,
 			equipments,
 			beneficiaries,
-			allocation,
+			accruals,
 			payment,
 			subsidie,
 		} = this.props;
@@ -61,12 +61,12 @@ class Main extends PureComponent {
 				}
 				
 				{
-					allocation.isFetch ? <Loader message="Загрузка данных о начислениях"/> : (
-						allocation.isError ? <Popup caption="Ошибка!" message={allocation.error.message}/> :
-							<Allocations allocations={allocation.allocations}
-							             corrections={allocation.corrections}
-							             price={allocation.price}
-							             balance={allocation.balance}
+					accruals.uploading ? <Loader message="Загрузка данных о начислениях"/> : (
+						accruals.isError ? <Popup caption="Ошибка!" message={accruals.error.message}/> :
+							<Allocations allocations={accruals.allocations}
+							             corrections={accruals.corrections}
+							             price={accruals.price}
+							             balance={accruals.balance}
 							/>
 					)
 				}
@@ -97,13 +97,13 @@ export default connect(
 		account: {...state.account},
 		equipments: {...state.equipments},
 		beneficiaries: {...state.beneficiaries},
-		allocation: state.cabinet.abonent.allocation,
+		accruals: {...state.accruals},
 		payment: state.cabinet.abonent.payment,
 		subsidie: state.cabinet.abonent.subsidie,
 	}),
 	dispatch => ({
 		uploadAccount: (ls, token) => dispatch(getAccount(ls, token)),
-		onAllocation: (ls, token) => dispatch(getAllocations(ls, token)),
+		uploadAccruals: (ls, token) => dispatch(getAccruals(ls, token)),
 		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
 		uploadEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
