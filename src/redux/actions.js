@@ -11,7 +11,6 @@ import {
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
 	SUBSIDIES_SUSSES,
-	BENEFICIARIES_SUSSES,
 } from "./constants";
 
 const APP_KEY = process.env.REACT_APP_API_KEY;
@@ -121,24 +120,9 @@ export const getSubsidies = (ls, token) => {
 	}
 };
 
-export const getBeneficiares = (ls, token) => {
-	return async dispatch => {
-		const res = await fetch(
-			`${API_ENDPOINT}/beneficiaries/${ls}`, {
-				headers: new Headers({
-					'Authorization': `Bearer ${token}`,
-					'Content_Type': 'application/json',
-				}),
-			}
-		);
-		
-		const json = await res.json();
-		const beneficiares = json.data;
-		dispatch({type: BENEFICIARIES_SUSSES, beneficiares});
-	};
-};
 
 export const logout = () => ({type: LOGOUT});
 
 export * from './account/actions';
 export * from './equipments/actions';
+export * from './beneficiaries/actions';

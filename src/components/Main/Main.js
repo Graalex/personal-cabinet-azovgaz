@@ -14,7 +14,7 @@ import {
 	getPayments,
 	getSubsidies,
 	getEquipments,
-	getBeneficiares,
+	getBeneficiaries,
 } from '../../redux/actions';
 
 class Main extends PureComponent {
@@ -27,12 +27,12 @@ class Main extends PureComponent {
 			onPayment,
 			onSubsidie,
 			uploadEquipments,
-			onBeneficiares,
+			uploadBeneficiaries,
 		} = this.props;
 		
 		uploadEquipments(ls, token);
 		uploadAccount(ls, token);
-		onBeneficiares(ls, token);
+		uploadBeneficiaries(ls, token);
 		onAllocation(ls, token);
 		onPayment(ls, token);
 		onSubsidie(ls, token);
@@ -42,6 +42,7 @@ class Main extends PureComponent {
 		const {
 			account,
 			equipments,
+			beneficiaries,
 			allocation,
 			payment,
 			subsidie,
@@ -53,7 +54,8 @@ class Main extends PureComponent {
 					account.uploading ? <Loader message="Загрузка данных о лицевом счете"/> : (
 						account.error ? <Popup caption="Ошибка!" message={account.error.message}/> :
 							<Account account={account}
-							         equipments={equipments.list}
+							         equipments={equipments}
+							         beneficiaries={beneficiaries}
 							/>
 					)
 				}
@@ -94,6 +96,7 @@ export default connect(
 		token: state.cabinet.authenticate.token,
 		account: {...state.account},
 		equipments: {...state.equipments},
+		beneficiaries: {...state.beneficiaries},
 		allocation: state.cabinet.abonent.allocation,
 		payment: state.cabinet.abonent.payment,
 		subsidie: state.cabinet.abonent.subsidie,
@@ -104,6 +107,6 @@ export default connect(
 		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
 		uploadEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
-		onBeneficiares: (ls, token) => dispatch(getBeneficiares(ls, token)),
+		uploadBeneficiaries: (ls, token) => dispatch(getBeneficiaries(ls, token)),
 	})
 )(Main);
