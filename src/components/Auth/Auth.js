@@ -37,7 +37,7 @@ class Auth extends PureComponent {
 	};
 	
 	render() {
-		const {isFetching, isError, error} = this.props;
+		const {pending, isError, error} = this.props;
 		
 		return (
 			<section className="auth">
@@ -60,7 +60,7 @@ class Auth extends PureComponent {
 					<div className="auth-form-row auth-form-row--right">
 						<button className="button" type="button" onClick={this.handleClick}>Найти лицевой счет</button>
 					</div>
-					{isFetching && <Loader message="Проверка лицевого счета"/>}
+					{pending && <Loader message="Проверка лицевого счета"/>}
 				</form>
 				{isError &&
 					<Popup caption="Ошибка!"
@@ -76,9 +76,9 @@ class Auth extends PureComponent {
 const AuthContainer = connect(
 	state => ({
 		abonent: getFormValues('authentification')(state),
-		isFetching: state.cabinet.authenticate.isFetching,
-		error: state.cabinet.authenticate.error,
-		isError: state.cabinet.authenticate.isError,
+		pending: state.auth.pending,
+		error: {...state.auth.error},
+		isError: state.auth.isError,
 	}),
 	dispatch => ({onLogin: (ls, family) => dispatch(login(ls, family))})
 )(Auth);

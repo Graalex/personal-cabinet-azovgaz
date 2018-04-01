@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
-const Allocations = ({
+const Accruals = ({
 	allocations,
 	corrections,
 	price,
@@ -122,11 +122,11 @@ const Allocations = ({
 	);
 };
 
-Allocations.propTypes = {
-	allocations: PropTypes.array.isRequired,
+Accruals.propTypes = {
+	allocations: PropTypes.array,
 	corrections: PropTypes.array,
-	price: PropTypes.number.isRequired,
-	balance: PropTypes.object.isRequired,
+	price: PropTypes.number,
+	balance: PropTypes.object,
 };
 
-export default Allocations;
+export default Accruals;

@@ -10,7 +10,7 @@ import AccountItem from './AccountItem';
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
 
-const Account = ({account}) => {
+const Account = ({account, equipments, beneficiaries}) => {
 	const benefHeader = [
 		'Льготник',
 		'Вид льготы',
@@ -29,8 +29,8 @@ const Account = ({account}) => {
 	];
 	
 	let benefData;
-	if (account && account.beneficiares) {
-		benefData = account.beneficiares.map(item => ([
+	if (beneficiaries && beneficiaries.list) {
+		benefData = beneficiaries.list.map(item => ([
 			`${item.family} ${item.name} ${item.patronymic}`,
 			item.type,
 			`${item.percent}%`,
@@ -40,8 +40,8 @@ const Account = ({account}) => {
 	}
 	
 	let equipData;
-	if (account && account.equipments) {
-		equipData = account.equipments.map(item => ([
+	if (equipments.list) {
+		equipData = equipments.list.map(item => ([
 			item.type,
 			item.name,
 			item.quantity,
@@ -75,18 +75,23 @@ const Account = ({account}) => {
 			<AccountItem label="Счетчик газовый:" value={`${account.meter} зав. №${account.meterNumb}`}/>
 		)}
 		
-		{account.beneficiares && account.beneficiares.length > 0 && (
+		{beneficiaries.list && beneficiaries.list.length > 0 && (
 			<section>
 				<HeaderPartion title="Льготы" level={3}/>
 				<AccountTable headers={benefHeader} data={benefData}/>
 			</section>
 		)}
 		
-		{account.equipments && (
-			<section>
-				<HeaderPartion title="Газовые приборы" level={3}/>
-				<AccountTable headers={equipHeader} data={equipData}/>
-			</section>
+		{equipments.list && equipments.list.length > 0 ?
+				<section>
+					<HeaderPartion title="Газовые приборы" level={3}/>
+					<AccountTable headers={equipHeader} data={equipData}/>
+				</section>
+			:
+				<section>
+					<AccountItem label="Газопотребляющее оборудование:" value="Загрузка данных ..."/>
+				</section>
+		}
 		)}
 		
 		{account.powers &&
@@ -101,6 +106,9 @@ const Account = ({account}) => {
 
 Account.propTypes = {
 	account: PropTypes.object.isRequired,
+	equipments: PropTypes.object,
+	beneficiaries: PropTypes.object,
+	
 };
 
 export default Account;

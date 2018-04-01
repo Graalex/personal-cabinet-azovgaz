@@ -1,0 +1,3 @@
+export const EQUIPMENTS_UPLOAD = '@@Graalex/EQUIPMENTS_UPLOAD';
+export const EQUIPMENTS_SUSSES = '@@Graalex/EQUIPMENTS_SUSSES';
+export const EQUIPMENTS_FAILURE = '@@Graalex/EQUIPMENTS_FAILURE';

@@ -1,0 +1,3 @@
+export const SUBSIDIES_UPLOAD = '@@Graalex/SUBSIDIES_UPLOAD';
+export const SUBSIDIES_SUSSES = '@@Graalex/SUBSIDIES_SUSSES';
+export const SUBSIDIES_FAILURE = '@@Graalex/SUBSIDIES_FAILURE';

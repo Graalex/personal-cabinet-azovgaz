@@ -20,11 +20,11 @@ const App = ({isAuth}) => (
 				<p className="page-header-caption__subtitle">Личный кабинет абонента</p>
 			</h1>
 		</header>
-		{isAuth ? <Layout/> : <Auth handleSubmit={this.login}/>}
+		{isAuth ? <Layout/> : <Auth/>}
 		<footer className="page-footer">ООО "АЗОВГАЗ"</footer>
 	</React.Fragment>
 );
 
 export default connect(
-  state => ({isAuth: state.cabinet.authenticate.isAuth})
+  state => ({isAuth: state.auth.isAuth})
 )(App);
