@@ -24,7 +24,7 @@ class Main extends PureComponent {
 			token,
 			uploadAccount,
 			uploadAccruals,
-			onPayment,
+			uploadPayments,
 			onSubsidie,
 			uploadEquipments,
 			uploadBeneficiaries,
@@ -34,7 +34,7 @@ class Main extends PureComponent {
 		uploadAccount(ls, token);
 		uploadBeneficiaries(ls, token);
 		uploadAccruals(ls, token);
-		onPayment(ls, token);
+		uploadPayments(ls, token);
 		onSubsidie(ls, token);
 	}
 	
@@ -44,7 +44,7 @@ class Main extends PureComponent {
 			equipments,
 			beneficiaries,
 			accruals,
-			payment,
+			payments,
 			subsidie,
 		} = this.props;
 		
@@ -72,9 +72,9 @@ class Main extends PureComponent {
 				}
 				
 				{
-					payment.isFetch ? <Loader message="Загрузка данных о платежах"/> : (
-						payment.isError ? <Popup caption="Ошибка!" message={payment.error.message}/> :
-							<Payments payments={payment.payments}/>
+					payments.uploading ? <Loader message="Загрузка данных о платежах"/> : (
+						payments.isError ? <Popup caption="Ошибка!" message={payments.error.message}/> :
+							<Payments payments={payments.list}/>
 					)
 				}
 				
@@ -98,13 +98,13 @@ export default connect(
 		equipments: {...state.equipments},
 		beneficiaries: {...state.beneficiaries},
 		accruals: {...state.accruals},
-		payment: state.cabinet.abonent.payment,
+		payments: {...state.payments},
 		subsidie: state.cabinet.abonent.subsidie,
 	}),
 	dispatch => ({
 		uploadAccount: (ls, token) => dispatch(getAccount(ls, token)),
 		uploadAccruals: (ls, token) => dispatch(getAccruals(ls, token)),
-		onPayment: (ls, token) => dispatch(getPayments(ls, token)),
+		uploadPayments: (ls, token) => dispatch(getPayments(ls, token)),
 		onSubsidie: (ls, token) => dispatch(getSubsidies(ls, token)),
 		uploadEquipments: (ls, token) => dispatch(getEquipments(ls, token)),
 		uploadBeneficiaries: (ls, token) => dispatch(getBeneficiaries(ls, token)),

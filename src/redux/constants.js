@@ -6,12 +6,6 @@ export const AUTH_FAILURE = '@@Graalex/AUTH_FAILURE';
 // Выход из кабинета
 export const LOGOUT = '@@Graalex/LOGOUT';
 
-// Начисления
-// Платежи
-export const PAYMENTS_FETCHING = '@@Graalex/PAYMENTS_FETCHING';
-export const PAYMENTS_SUSSES = '@@Graalex/PAYMENTS_SUSSES';
-export const PAYMENTS_FAILURE = '@@Graalex/PAYMENTS_FAILURE';
-
 // Субсидии
 export const SUBSIDIES_FETCHING = '@@Graalex/SUBSIDIES_FETCHING';
 export const SUBSIDIES_SUSSES = '@@Graalex/SUBSIDIES_SUSSES';

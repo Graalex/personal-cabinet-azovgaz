@@ -5,9 +5,6 @@ import {
 	AUTH_FAILURE,
 	AUTH_FETCHING,
 	AUTH_SUSSES, LOGOUT,
-	PAYMENTS_FAILURE,
-	PAYMENTS_FETCHING,
-	PAYMENTS_SUSSES,
 	SUBSIDIES_FAILURE,
 	SUBSIDIES_FETCHING,
 	SUBSIDIES_SUSSES,
@@ -17,6 +14,7 @@ import {account} from './account/reducer';
 import {equipments} from './equipments/reducer';
 import {beneficiaries} from './beneficiaries/reducer';
 import {accruals} from './accruals/reducer';
+import {payments} from './payments/reducer';
 
 const initialState = {
 	authenticate: {
@@ -77,32 +75,6 @@ const cabinet = (state = initialState, action) => {
 			authErr.error = action.error;
 			return {...state, authenticate: authErr};
 			
-		case PAYMENTS_FETCHING:
-			const abnPayFet = {...state.abonent};
-			const payFet = {...state.abonent.payment};
-			payFet.isFetching = true;
-			payFet.isError = false;
-			abnPayFet.payment = payFet;
-			return {...state, abonent: abnPayFet};
-		
-		case PAYMENTS_FAILURE:
-			const abnPayFal = {...state.abonent};
-			const payFal = {...state.abonent.payment};
-			payFal.isFetching = false;
-			payFal.isError = true;
-			payFal.error = action.error;
-			abnPayFal.payment = payFal;
-			return {...state, abonent: abnPayFal};
-		
-		case PAYMENTS_SUSSES:
-			const abnPaySus = {...state.abonent};
-			const paySus = {...state.abonent.payment};
-			paySus.isFetching = false;
-			paySus.isError = false;
-			paySus.payments = action.payments;
-			abnPaySus.payment = paySus;
-			return {...state, abonent: abnPaySus};
-		
 		case SUBSIDIES_FETCHING:
 			const abnSubFet = {...state.abonent};
 			const subFet = {...state.abonent.subsidie};
@@ -144,5 +116,6 @@ export default combineReducers({
 	equipments,
 	beneficiaries,
 	accruals,
+	payments,
 	form: formReducer
 });
