@@ -1,0 +1,16 @@
+.page-header {
+	display: grid;
+	grid-column: 1/3;
+	grid-template-columns: auto 1fr;
+	background-color: var(--primary-color);
+	color: var(--primary-ultradark-color);
+	padding: 0 1rem;
+	min-height: 70px;
+	line-height: 70px;
+}
+
+@media (max-width:  790px) {
+	.page-header {
+		min-height: 70px;
+	}
+}

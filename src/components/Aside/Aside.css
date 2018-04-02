@@ -1,0 +1,10 @@
+.page-panel {
+	background-color: var(--secondary-light-color);
+	color: var(--secondary-ultradark-color);
+}
+
+@media (max-width:  790px) {
+	.page-panel {
+		display: none;
+	}
+}

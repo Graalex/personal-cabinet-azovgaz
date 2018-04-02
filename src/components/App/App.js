@@ -5,10 +5,11 @@ import Auth from '../Auth/Auth';
 import Layout from '../Layout/Layout';
 import MenuSwitch from '../MenuSwitch/MenuSwitch';
 
-import logo from './logo.svg';
 import './App.css';
 
 const App = ({isAuth}) => (
+	<Layout/>
+	/*
 	<React.Fragment>
 		<header className="page-header">
 			<div className="page-header-logo">
@@ -23,6 +24,7 @@ const App = ({isAuth}) => (
 		{isAuth ? <Layout/> : <Auth/>}
 		<footer className="page-footer">ООО "АЗОВГАЗ"</footer>
 	</React.Fragment>
+	*/
 );
 
 export default connect(

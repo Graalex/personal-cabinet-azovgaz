@@ -17,6 +17,15 @@ import {
 	getBeneficiaries,
 } from '../../redux/actions';
 
+import './Main.css';
+
+const Main = () => (
+	<main className="page-main">PAGE MAIN</main>
+);
+
+export default Main;
+
+/*
 class Main extends PureComponent {
 	componentDidMount() {
 		const {
@@ -110,3 +119,4 @@ export default connect(
 		uploadBeneficiaries: (ls, token) => dispatch(getBeneficiaries(ls, token)),
 	})
 )(Main);
+*/

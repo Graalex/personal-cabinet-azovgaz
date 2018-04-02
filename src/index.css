@@ -10,28 +10,47 @@
   --light-bg-color: #B3E5FC;
   --ultralight-bg-color: #E1F5FE;
   --loader-bg-color: #DDD;
+  
+  --primary-color: #2196F3;
+  --primary-light-color: #90CAF9;
+  --primary-ultralight-color: #E3F2FD;
+  --primary-dark-color: #1976D2;
+  --primary-ultradark-color: #2962FF;
+  
+  --secondary-color: #FF9800;
+  --secondary-light-color: #FFCC80;
+  --secondary-ultralight-color: #FFF3E0;
+  --secondary-dark-color: #F57C00;
+  --secondary-ultradark-color: #E65100;
+  --paper-color: #FAFAFA;
+  --grey-color: #424242;
+  
+  --base-font-size: 14px;
+  --base-line-height: 1.25;
 }
 
 *, html {
   margin: 0;
   padding: 0;
   font-family: 'Roboto', sans-serif;
-  font-size: 14px;
-  line-height: 1.25;
+  font-size: var(--base-font-size);
+  line-height: var(--base-line-height);
 }
 
 body {
-  background-color: var(--bd-color);
+  background-color: var(--primary-ultradark-color);
 }
 
 #cabinet {
   display: grid;
   grid-template-rows: auto 1fr 75px;
+  grid-template-columns: 300px 1fr;
+  grid-gap: .5rem;
   max-width: 1260px;
   min-width: 320px;
   min-height: 100vh;
   margin: 0 auto;
-  background-color: var(--cnt-color);
+  background-color: var(--paper-color);
 }
 
 .button {
@@ -59,3 +78,10 @@ body {
 .cabinet-section:last-child {
   border-bottom: none;
 }
+
+@media (max-width:  790px) {
+  #cabinet {
+    grid-template-rows: 70px 1fr 50px;
+  }
+}
+
