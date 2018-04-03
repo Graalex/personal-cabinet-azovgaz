@@ -1,10 +1,9 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import './Footer.css';
 
-const Footer = () => (
-	<footer className="page-footer">PAGE FOOTER</footer>
+const Footer = ({children}) => (
+	<footer className="page-footer">{children}</footer>
 );
 
 export default Footer;

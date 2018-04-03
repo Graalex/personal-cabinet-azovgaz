@@ -2,10 +2,12 @@
 	position: static;
 	width: 300px;
 	max-width: 300px;
-	background-color: var(--secondary-light-color);
-	color: var(--secondary-ultradark-color);
 	overflow: hidden;
 	box-shadow: none;
+}
+
+.hidden {
+	display: none !important;
 }
 
 @media (max-width:  790px) {

@@ -1,11 +1,10 @@
 .page-main {
 	grid-column: 2/3;
-	background-color: pink;
+	overflow-y: scroll;
 }
 
 @media (max-width: 790px) {
 	.page-main {
 		grid-column: 1/3;
-		overflow-y: scroll;
 	}
 }

@@ -9,13 +9,19 @@ import Main from '../Main/Main';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Sidebar from '../Sidebar/Sidebar';
+import Auth from '../Auth/Auth';
+import Cabinet from '../Cabinet/Cabinet';
 
 const Layout = ({isAuth, openSidebar}) => (
 	<React.Fragment>
 		<Header/>
-		<Sidebar open={openSidebar}/>
-		<Main/>
-		<Footer/>
+		<Sidebar open={openSidebar}
+		         display={isAuth}
+		>
+			<Nav/>
+		</Sidebar>
+		<Main>{isAuth ? <Cabinet/> : <Auth/>}</Main>
+		<Footer>2017-2018&copy;ООО АЗОВГАЗ</Footer>
 	</React.Fragment>
 );
 
