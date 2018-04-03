@@ -1,7 +1,7 @@
 .header-partion {
 	text-align: center;
 	font-weight: bold;
-	color: var(--active-text-color);
+	color: var(--primary-text-color);
 }
 
 .header-partion__title {

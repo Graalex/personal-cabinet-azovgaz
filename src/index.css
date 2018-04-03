@@ -1,21 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Roboto:400,400i,700,700i&subset=cyrillic');
 
 :root {
-  --primary-bg-color: #64b0f3;
-  --primary-text-color: #125775;
-  --active-bg-color: #fbbe7a;
-  --active-text-color: #8e4d07;
-  --bd-color: #125775;
-  --cnt-color: #eee;
-  --light-bg-color: #B3E5FC;
-  --ultralight-bg-color: #E1F5FE;
-  --loader-bg-color: #DDD;
-  
   --primary-color: #2196F3;
   --primary-light-color: #90CAF9;
   --primary-ultralight-color: #E3F2FD;
   --primary-dark-color: #1976D2;
   --primary-ultradark-color: #2962FF;
+  --primary-text-color: #4E342E;
   
   --secondary-color: #FF9800;
   --secondary-light-color: #FFCC80;
@@ -24,6 +15,7 @@
   --secondary-ultradark-color: #E65100;
   --paper-color: #FAFAFA;
   --grey-color: #424242;
+  --lightgrey-color: #9E9E9E;
   
   --base-font-size: 14px;
   --base-line-height: 1.25;
@@ -38,7 +30,7 @@
 }
 
 body {
-  background-color: var(--primary-ultradark-color);
+  background-color: var(--lightgrey-color);
 }
 
 #cabinet {
@@ -63,7 +55,7 @@ body {
   outline: none;
   border-radius: 2px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
-  background-color: var(--primary-bg-color);
+  background-color: var(--primary-color);
   color: var(--primary-text-color);
   transition: background-color .3s;
   font-weight: bold;
@@ -73,7 +65,7 @@ body {
   display: grid;
   grid-gap: 1.2rem;
   padding-bottom: 2rem;
-  border-bottom: 2px dotted var(--active-bg-color);
+  border-bottom: 2px dotted var(--secondary-ultradark-color);
 }
 
 .cabinet-section:last-child {
