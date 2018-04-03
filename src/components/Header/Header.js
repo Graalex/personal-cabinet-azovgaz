@@ -1,15 +1,17 @@
 import React from 'react';
+import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
 import NavButton from '../NavButton/NavButton';
 import Logo from '../Logo/Logo';
+import {toggleSidebar} from '../../redux/actions';
 
 import './Header.css';
 
-const Header = () => (
+const Header = ({onToggleSidebar}) => (
 	<header className="page-header">
 		<div className="page-header__nav-button">
-			<NavButton handleClick={alert('Click')}/>
+			<NavButton handleClick={onToggleSidebar}/>
 		</div>
 		<div className="page-header__logo">
 			<Logo/>
@@ -21,4 +23,11 @@ const Header = () => (
 	</header>
 );
 
-export default Header;
+Header.propTypes = {
+	onToogleSidebar: PropTypes.func,
+};
+
+export default connect(
+	null,
+	dispatch => ({onToggleSidebar: () => dispatch(toggleSidebar()),})
+)(Header);
