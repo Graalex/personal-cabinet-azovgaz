@@ -48,6 +48,7 @@ body {
   grid-gap: .5rem;
   max-width: 1260px;
   min-width: 320px;
+  min-height: 100vh;
   max-height: 100vh;
   margin: 0 auto;
   background-color: var(--paper-color);

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import Auth from '../Auth/Auth';
 import Layout from '../Layout/Layout';
-import MenuSwitch from '../MenuSwitch/MenuSwitch';
+import MenuSwitch from '../NavButton/NavButton';
 
 import './App.css';
 
@@ -14,7 +14,7 @@ const App = ({isAuth}) => (
 		<header className="page-header">
 			<div className="page-header-logo">
 				<img className="page-header-logo__img" src={logo} alt="Личный кабинет ООО АЗОВГАЗ"/>
-				<MenuSwitch/>
+				<NavButton/>
 			</div>
 			<h1 className="page-header-caption">
 				<p className="page-header-caption__title">ООО "АЗОВГАЗ"</p>

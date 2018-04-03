@@ -1,14 +1,18 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import logo from './logo.svg';
-import bars from './bars.svg';
+import NavButton from '../NavButton/NavButton';
+import Logo from '../Logo/Logo';
+
 import './Header.css';
 
 const Header = () => (
 	<header className="page-header">
-		<div className="page-header-logo">
-			<i className="bars"/>
+		<div className="page-header__nav-button">
+			<NavButton handleClick={alert('Click')}/>
+		</div>
+		<div className="page-header__logo">
+			<Logo/>
 		</div>
 		<h1 className="page-header-caption">
 			<p className="page-header-caption__title">ООО "АЗОВГАЗ"</p>
