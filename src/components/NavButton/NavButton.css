@@ -1,0 +1,14 @@
+.nav-button {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.nav-button__bars {
+	display: block;
+	content: "";
+	width: 100%;
+	height: 100%;
+	background-image: url("./bars.svg");
+	background-repeat: no-repeat;
+}

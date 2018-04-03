@@ -1,6 +1,6 @@
 .anchor-item {
 	display: block;
-	background-color: var(--primary-bg-color);
+	background-color: var(--primary-color);
 	font-weight: bold;
 	font-size: 1.1rem;
 	min-height: 50px;
@@ -9,7 +9,8 @@
 }
 
 .anchor-item--active {
-	background-color: var(--active-bg-color);
+	background-color: var(--secondary-light-color);
+	color: var(--secondary-ultradark-color);
 }
 
 .anchor-item a {

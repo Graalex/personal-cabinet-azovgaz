@@ -1,6 +1,5 @@
 .nav {
-	position: fixed;
-	width: 200px;
+	background-color: var(--paper-color);
 }
 
 .nav__menu {

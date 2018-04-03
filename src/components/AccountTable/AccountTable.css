@@ -4,17 +4,17 @@
 
 .account-table__header {
 	height: 2.5rem;
-	background-color: var(--primary-bg-color);
-	color: var(--active-text-color);
+	background-color: var(--primary-color);
+	color: var(--primary-text-color);
 }
 
 .account-table__data {
 	height: 2.5rem;
 	text-align: center;
 	font-weight: bold;
-	background-color: var(--ultralight-bg-color);
+	background-color: var(--primary-light-color);
 }
 
 .account-table__data:nth-child(2n+1) {
-	background-color: var(--light-bg-color);
+	background-color: var(--primary-ultralight-color);
 }

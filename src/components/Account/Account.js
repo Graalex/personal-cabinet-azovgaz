@@ -24,9 +24,6 @@ const Account = ({account, equipments, beneficiaries}) => {
 		'Ко-во',
 		'В работе',
 	];
-	const planHeader = [
-		'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'
-	];
 	
 	let benefData;
 	if (beneficiaries && beneficiaries.list) {
@@ -47,11 +44,6 @@ const Account = ({account, equipments, beneficiaries}) => {
 			item.quantity,
 			item.cutOff ? 'Нет' : 'Да',
 		]));
-	}
-	
-	let planData;
-	if (account && account.powers) {
-		planData = [account.powers];
 	}
 	
 	return (
@@ -91,14 +83,6 @@ const Account = ({account, equipments, beneficiaries}) => {
 				<section>
 					<AccountItem label="Газопотребляющее оборудование:" value="Загрузка данных ..."/>
 				</section>
-		}
-		)}
-		
-		{account.powers &&
-		<section>
-			<HeaderPartion title="Плановое потребление природного газа по месяцам" level={3}/>
-			<AccountTable headers={planHeader} data={planData}/>
-		</section>
 		}
 	</section>
 	);

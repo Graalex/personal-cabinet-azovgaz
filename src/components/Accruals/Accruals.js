@@ -8,6 +8,7 @@ import PropTypes from 'prop-types';
 
 import {HeaderPartion} from '../HeaderPartion';
 import {AccountTable} from '../AccountTable';
+import {AccountItem} from '../Account';
 
 const Accruals = ({
 	allocations,
@@ -18,8 +19,6 @@ const Accruals = ({
 	let allocs;
 	let corrects;
 	let prc;
-	let bal;
-	let balHeader;
 	
 	const allocHeader = [
 		'Год',
@@ -62,26 +61,6 @@ const Accruals = ({
 			.format(price);
 	}
 	
-	if (balance) {
-		bal = [[
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.beginSaldo),
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.accrual),
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.correction),
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.payment),
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(balance.subsidie),
-			new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'}).format(Math.abs(balance.saldo)),
-		]];
-		
-		balHeader = [
-			'Начальное сальдо',
-			'Начислено',
-			'Корректировка',
-			'Оплачено',
-			'Субсидии',
-			balance.saldo < 0 ? 'Переплата' : 'Долг',
-		];
-	}
-	
 	return (
 		<section className="cabinet-section">
 			<a name="allocations">
@@ -110,11 +89,14 @@ const Accruals = ({
 			
 			{
 				balance && (
+					
 					<section>
-						<HeaderPartion title="Баланс  по лицевому счету"
-						               level={3}
+						<AccountItem label={`Баланс по лицевому счету: (${balance.saldo <= 0 ? 'переплата' : 'долг'})`}
+						             value={
+							             new Intl.NumberFormat('ru', {style: 'currency', currency: 'UAH'})
+								             .format(Math.abs(balance.saldo))
+						             }
 						/>
-						<AccountTable headers={balHeader} data={bal}/>
 					</section>
 				)
 			}

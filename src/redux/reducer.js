@@ -8,6 +8,7 @@ import {accruals} from './accruals/reducer';
 import {payments} from './payments/reducer';
 import {subsidies} from './subsidies/reducer';
 import {auth} from './auth/reducer';
+import {widgets} from './widgets/reducer';
 
 export default combineReducers({
 	auth,
@@ -17,5 +18,6 @@ export default combineReducers({
 	accruals,
 	payments,
 	subsidies,
+	widgets,
 	form: formReducer
 });

@@ -1,0 +1,48 @@
+.page-sidebar {
+	position: static;
+	width: 300px;
+	max-width: 300px;
+	overflow: hidden;
+	box-shadow: none;
+}
+
+.hidden {
+	display: none !important;
+}
+
+@media (max-width:  790px) {
+	.page-sidebar {
+		position: fixed;
+		left: 0;
+		top: calc(50px + .5rem);
+		width: 0;
+		bottom: calc(50px + 0.5rem);
+		box-shadow: 0 2px 8px var(--grey-color);
+		animation: .5s linear slideout;
+	}
+	
+	.open {
+		width: 300px;
+		animation: .5s linear slidein;
+	}
+	
+	@keyframes slidein {
+		from {
+			width: 0;
+		}
+		
+		to {
+			width: 300px;
+		}
+	}
+	
+	@keyframes slideout {
+		from {
+			width: 300px;
+		}
+		
+		to {
+			width: 0;
+		}
+	}
+}

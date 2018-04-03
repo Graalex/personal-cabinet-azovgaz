@@ -5,3 +5,4 @@ export * from './accruals/actions';
 export * from './payments/actions';
 export * from './subsidies/actions';
 export * from './auth/actions';
+export * from './widgets/actions';
