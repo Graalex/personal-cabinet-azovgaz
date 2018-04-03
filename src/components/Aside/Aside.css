@@ -1,4 +1,6 @@
 .page-panel {
+	display: block;
+	min-width: 300px;
 	background-color: var(--secondary-light-color);
 	color: var(--secondary-ultradark-color);
 }

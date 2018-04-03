@@ -20,7 +20,9 @@ import {
 import './Main.css';
 
 const Main = () => (
-	<main className="page-main">PAGE MAIN</main>
+	<main className="page-main">
+		<h2>PAGE MAIN</h2>
+	</main>
 );
 
 export default Main;

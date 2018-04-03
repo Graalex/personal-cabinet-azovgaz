@@ -43,12 +43,12 @@ body {
 
 #cabinet {
   display: grid;
-  grid-template-rows: auto 1fr 75px;
-  grid-template-columns: 300px 1fr;
+  grid-template-rows: auto 1fr 50px;
+  grid-template-columns: auto 1fr;
   grid-gap: .5rem;
   max-width: 1260px;
   min-width: 320px;
-  min-height: 100vh;
+  max-height: 100vh;
   margin: 0 auto;
   background-color: var(--paper-color);
 }
@@ -79,9 +79,4 @@ body {
   border-bottom: none;
 }
 
-@media (max-width:  790px) {
-  #cabinet {
-    grid-template-rows: 70px 1fr 50px;
-  }
-}
 

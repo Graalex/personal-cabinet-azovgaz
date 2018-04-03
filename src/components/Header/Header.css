@@ -4,13 +4,41 @@
 	grid-template-columns: auto 1fr;
 	background-color: var(--primary-color);
 	color: var(--primary-ultradark-color);
-	padding: 0 1rem;
-	min-height: 70px;
-	line-height: 70px;
 }
 
+.page-header-logo {
+	/*
+	max-width: 150px;
+	width: 100%;
+	*/
+}
+
+.page-header-logo__img {
+	display: block;
+	width: 100%;
+}
+
+.page-header-caption {
+	display: grid;
+	grid-template-rows: 70% auto;
+	align-items: center;
+	min-height: 50px;
+	text-align: center;
+}
+
+.page-header-caption__title {
+	font-size: 2rem;
+}
+
+.page-header-caption__subtitle {
+	display: block;
+	font-size: 1.5rem;
+	font-style: italic;
+}
+
+
 @media (max-width:  790px) {
-	.page-header {
-		min-height: 70px;
+	.page-header-caption__subtitle {
+		display: none;
 	}
 }
