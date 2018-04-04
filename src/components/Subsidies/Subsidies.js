@@ -14,6 +14,7 @@ const Subsidies = ({subsidies}) => {
 		'Год',
 		'Месяц',
 		'Сумма, грн',
+		'Обязательный платеж, грн',
 	];
 	
 	let subsData;
@@ -22,6 +23,7 @@ const Subsidies = ({subsidies}) => {
 			item.year,
 			item.month,
 			new Intl.NumberFormat('ru', {style: 'currency',	currency: 'UAH'}).format(item.sum),
+			new Intl.NumberFormat('ru', {style: 'currency',	currency: 'UAH'}).format(item.mandatory),
 		]));
 	}
 	
